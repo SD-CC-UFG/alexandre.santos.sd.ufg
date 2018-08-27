@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>		
+
+	<body>
+		<h1>Questão #6: Calculo Salário Líquido</h1>
+			<div align="center">
+				<form action ="/salarioLiquido" method="POST">
+					<p> Insira a seguir o nome, nível (A,B,C,D), salário bruto e nº de dependentes do funcionário: </p>
+					<label for="nome"> Nome:</label>
+					<input type="nome" name="nome" id="nome"><br>
+					<label for="nivel"> Nível:</label>
+					<input type="nivel" name="nivel" id="nivel"><br>
+					<label for="salBruto"> Salário Bruto:</label>
+					<input type="salBruto" name="salBruto" id="salBruto"><br>
+					<label for="numDepend"> Nº dependentes:</label>
+					<input type="numDepend" name="numDepend" id="numDepend"><br>
+					<br><br>
+					<input type="submit" value="Submeter">
+				</form>
+				<br>
+				<h2> Valores de referência:</h2>
+				<p>Nivel A: Desconto de 3% caso não houver dependentes e  8% caso houver</p>
+				<p>Nivel B: Desconto de 5% caso não houver dependentes e  10% caso houver</p>
+				<p>Nivel C: Desconto de 8% caso não houver dependentes e  15% caso houver</p>
+				<p>Nivel D: Desconto de 10% caso não houver dependentes e 17% caso houver</p>
+			</div>
+	</body>
+</html>

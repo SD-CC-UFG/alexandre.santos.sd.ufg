@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>		
+
+	<body>
+		<h1>Questão #3: Resultado de Notas</h1>
+			<div align="center">
+				<form action ="/resultadoNotas" method="POST">
+				<p> Insira a seguir as notas dos exames N1, N2 e N3 (0 a 10): </p>
+					<label for="nota1"> N1:</label>
+					<input type="nota1" name="nota1" id="nota1">
+					<br>
+					<label for="nota2"> N2:</label>
+					<input type="nota2" name="nota2" id="nota2">
+					<br>
+					<label for="nota3"> N3:</label>
+					<input type="nota3" name="nota3" id="nota3">
+					<br>
+					<br><br>
+					<input type="submit" value="Submeter">
+				</form>
+				<br>
+				<h2> Valores de referência:</h2>
+				<p>Média aritmética entre N1 e N2 >= 7.0: Aprovado(a)!</p>
+				<p>Média aritmética entre N1 e N2 >= 3.0 e menor que 7.0: Estudante deverá realizar exame N3!</p>
+				<p>Média aritmética (N1 e N2) + N3 / 2 >= 5.0: Aprovado(a)</p>
+				<p>Demais casos: Reprovado(a)</p>
+			</div>
+	</body>
+</html>
