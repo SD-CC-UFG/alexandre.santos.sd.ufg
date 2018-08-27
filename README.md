@@ -7,7 +7,7 @@
 <strong>Linguagens:</strong> Javascript, HTML<br>
 <strong>OBS:</strong> Para executar o projeto inicie o servidor através do arquivo "server.js". Na pasta do projeto 
 há ainda o documento PDF contendo a descrição dos exercícios e também capturas de tela do projeto em funcionamento
-em um dispositivo IOS através do navegador Safari.
+em um dispositivo IOS através do navegador Safari.<br> Para verificar edições anteriores referentes a essa atividade consulte: https://github.com/alexandreoliveirasantos/SD_Lista1
 
 <strong>Título:</strong> Próximo desafio. <br>
 /Edição futura/
