@@ -1,0 +1,51 @@
+package listaRPC;
+
+/*Autor: Alexandre Oliveira dos Santos
+ * Código adaptado de: http://tldp.org/HOWTO/XML-RPC-HOWTO/xmlrpc-howto-java.html
+ */
+
+import java.util.Hashtable;
+import helma.xmlrpc.*;
+
+public class JavaServer {
+
+    public JavaServer () {
+        // Our handler is a regular Java object. It can have a
+        // constructor and member variables in the ordinary fashion.
+        // Public methods will be exposed to XML-RPC clients.
+    }
+
+    public Hashtable reajustaSalario (String nome, String cargo, double salario) {
+        Hashtable result = new Hashtable();
+        double reajuste;
+        switch (cargo){
+        case "operador":
+	        reajuste = salario + (salario * 0.2);
+	        result.put("novoSalario", new Double(reajuste));
+        	result.put("nomeRecebido", new String(nome));
+        break;
+        case "programador":
+        	reajuste = salario + (salario * 0.18);
+            result.put("novoSalario", new Double(reajuste));
+            result.put("nomeRecebido", new String(nome));
+        break;
+        }
+        return result;
+    }
+
+    public static void main (String [] args) {
+        try {
+            
+            // Invoke me as <http://localhost:8080/RPC2>.
+            WebServer server = new WebServer(8080);
+            server.addHandler("sample", new JavaServer());
+            server.start();
+            
+            System.out.println("Started succesfully.");
+			System.out.println("Accepting requests. (Halt program to stop.)");
+
+        } catch (Exception exception) {
+            System.err.println("JavaServer: " + exception.toString());
+        }
+    }
+}

@@ -1,0 +1,14 @@
+
+public class WebServerManager {
+	
+	public void addHandler(String handlerName, Class<?> clazz) throws FatalESException {
+		try {
+			final PropertyHandlerMapping  = (PropertyHandlerMapping) webServer.getXmlRpcServer()
+				.getHandlerMapping();
+			mapper.addHandler(handlerName, clazz);
+		} catch (final XmlRpcException e) {
+			throw new FatalESException("Couldn't add handler", e);
+		}
+	}
+	
+}

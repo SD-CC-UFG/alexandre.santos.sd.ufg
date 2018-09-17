@@ -1,0 +1,16 @@
+package tldp;
+
+import java.util.Vector;
+import java.util.Hashtable;
+import helma.xmlrpc.*;
+
+//The location of our server
+private final static String server_url = "http://xmlrpc-c.sourceforge.net/api/sample.php";
+
+public class JavaClient {
+
+
+	
+	
+	
+}

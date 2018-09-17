@@ -1,0 +1,9 @@
+package tldp;
+
+import java.util.Vector;
+import java.util.Hashtable;
+import helma.xmlrpc.*;
+
+public class JavaClient {
+
+}

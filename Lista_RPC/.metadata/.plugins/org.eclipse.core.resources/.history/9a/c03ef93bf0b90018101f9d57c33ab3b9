@@ -1,0 +1,22 @@
+import org.apache.xmlrpc.*;
+import org.apache.xmlrpc.webserver.WebServer;
+
+public class JavaServer {
+	public Integer sum(int x, int y){
+		return new Integer(x+y);
+	}
+	
+	public static void main(String[] args){
+		try{
+			System.out.println("Attempting to start XML-RPC Server...");
+			
+			WebServer server = new WebServer(80);
+			server.addHandler("sample", new JavaServer());
+			server.start();
+			
+		}catch(Exception exception){
+			System.err.println("JavaServer: " +exception);
+		}
+	}
+	
+}

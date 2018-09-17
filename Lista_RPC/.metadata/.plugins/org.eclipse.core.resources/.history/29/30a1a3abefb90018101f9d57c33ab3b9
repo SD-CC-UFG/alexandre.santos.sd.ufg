@@ -1,0 +1,7 @@
+import org.apache.xmlrpc.*;
+
+public class JavaServer {
+	public Integer sum(int x, int y){
+		return new Integer(x+y);
+	}
+}

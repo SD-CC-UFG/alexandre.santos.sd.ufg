@@ -1,0 +1,36 @@
+import org.apache.xmlrpc.*;
+import java.net.URL;
+import org.apache.xmlrpc.webserver.WebServer;
+
+public class JavaServer {
+	public Integer sum(int x, int y){
+		return new Integer(x+y);
+	}
+	
+public void addHandler(String handlerName, Class<?> clazz) throws FatalESException {
+		try {
+			final PropertyHandlerMapping mapper = (PropertyHandlerMapping) webServer.getXmlRpcServer()
+				.getHandlerMapping();
+			mapper.addHandler(handlerName, clazz);
+		} catch (final XmlRpcException e) {
+			throw new FatalESException("Couldn't add handler", e);
+		}
+	}
+	
+	public static void main(String[] args){
+		try{
+			System.out.println("Attempting to start XML-RPC Server...");
+			
+			WebServer server = new WebServer(80);
+			server.addHandler("sample", new JavaServer());
+			server.start();
+			
+			System.out.println("Started succesfully.");
+			System.out.println("Accepting requests. (Halt program to stop.");
+			
+		}catch(Exception exception){
+			System.err.println("JavaServer: " +exception);
+		}
+	}
+	
+}

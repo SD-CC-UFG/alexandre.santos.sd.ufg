@@ -1,0 +1,12 @@
+import java.util.*;
+import org.apache.xmlrpc.*;
+
+public class JavaClient {
+	public static void main(String[] args){
+		try{
+			
+		}catch(Exception exception){
+			System.err.println("JavaClient: " +exception);
+		}
+	}
+}

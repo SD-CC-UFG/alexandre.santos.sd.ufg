@@ -1,0 +1,127 @@
+package listaRPC;
+
+import java.util.Vector;
+import java.util.Hashtable;
+import helma.xmlrpc.*;
+import org.apache.xerces.parsers.SAXParser;
+import java.util.Scanner;
+
+
+public class JavaClient {
+
+    // The location of our server.
+    private final static String server_url =
+        "http://localhost:8080/RPC2";
+
+    public static void main (String [] args) {
+    		Scanner scan = new Scanner(System.in);
+        	
+        	
+    		System.out.println("Informe o número da questão que deseja resolver: \n");
+        	int questao = scan.nextInt();
+        	scan.nextLine();
+        	
+    	try {
+
+            // Create an object to represent our server.
+            XmlRpcClient server = new XmlRpcClient(server_url);
+            
+            // Build our parameter list.
+            Vector params = new Vector();
+            
+            switch(questao){
+            case 1:
+	            String nome, cargo;
+	            double salario = 0;
+	            
+	            System.out.println("Informe o nome do Funcionario: \n");
+	        	nome = scan.nextLine();
+	        	System.out.println("Informe o cargo do Funcionario: \n");
+	        	cargo = scan.nextLine();
+	        	System.out.println("Informe o salario atual do Funcionario: \n");
+	        	salario = scan.nextInt();
+	        	
+	            params.addElement(new String(nome));
+	            params.addElement(new String(cargo));
+	            params.addElement(new Double(salario));
+	
+	            // Call the server, and get our result.
+	            Hashtable result =
+	                (Hashtable) server.execute("sample.reajustaSalario", params);
+	            int novoSalario = ((Double) result.get("novoSalario")).intValue();
+	            String nomeRecebido = ((String) result.get("nomeRecebido"));
+	            //int difference = ((Integer) result.get("difference")).intValue();
+	
+	            // Print out our result.
+	            System.out.println("Nome: " + nomeRecebido +
+	                               ". Salario Reajustado: " +
+	                               Integer.toString(novoSalario));
+	            break;
+            
+            case 2:
+                String sexo, menorMaior;
+                int idade=0;
+                
+                System.out.println("Informe o nome do usuario: \n");
+            	nome = scan.nextLine();
+            	System.out.println("Informe o sexo do usuario: \n");
+            	sexo = scan.nextLine();
+            	System.out.println("Informe a idade do usuario: \n");
+            	idade = scan.nextInt();
+            	
+                params.addElement(new String(nome));
+                params.addElement(new String(sexo));
+                params.addElement(new Integer(idade));
+                
+             // Call the server, and get our result.
+	            result =
+	                (Hashtable) server.execute("sample.maioridade", params);
+	            menorMaior = ((String) result.get("menorMaior"));
+	            nomeRecebido = ((String) result.get("nomeRecebido"));
+	
+	            // Print out our result.
+	            System.out.println("Nome: " + nomeRecebido +
+	                               ". Situação: " + menorMaior);
+            	
+            break;
+            
+            case 3:
+                String situacao;
+                double nota1, nota2, nota3;
+                
+                System.out.println("Informe o nome do usuario: \n");
+            	nome = scan.nextLine();
+            	System.out.println("Informe o sexo do usuario: \n");
+            	sexo = scan.nextLine();
+            	System.out.println("Informe a idade do usuario: \n");
+            	idade = scan.nextInt();
+            	
+                params.addElement(new String(nome));
+                params.addElement(new String(sexo));
+                params.addElement(new Integer(idade));
+                
+             // Call the server, and get our result.
+	            result =
+	                (Hashtable) server.execute("sample.maioridade", params);
+	            menorMaior = ((String) result.get("menorMaior"));
+	            nomeRecebido = ((String) result.get("nomeRecebido"));
+	
+	            // Print out our result.
+	            System.out.println("Nome: " + nomeRecebido +
+	                               ". Situação: " + menorMaior);
+            	
+            break;
+            
+            
+            default:
+            	break;
+            }
+        } catch (XmlRpcException exception) {
+            System.err.println("JavaClient: XML-RPC Fault #" +
+                               Integer.toString(exception.code) + ": " +
+                               exception.toString());
+        } catch (Exception exception) {
+            System.err.println("JavaClient: " + exception.toString());
+        }
+    }
+}

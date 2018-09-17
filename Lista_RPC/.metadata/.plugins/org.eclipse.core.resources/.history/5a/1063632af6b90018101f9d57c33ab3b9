@@ -1,0 +1,13 @@
+package tldp;
+
+import java.util.Vector;
+import java.util.Hashtable;
+import helma.xmlrpc.*;
+
+public class JavaClient {
+
+	//The location of our server
+	
+	
+	
+}

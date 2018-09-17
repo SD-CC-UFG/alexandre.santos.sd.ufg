@@ -1,0 +1,193 @@
+package listaRPC;
+
+/*Autor: Alexandre Oliveira dos Santos
+ * Código adaptado de: http://tldp.org/HOWTO/XML-RPC-HOWTO/xmlrpc-howto-java.html
+ */
+
+import java.util.Hashtable;
+import helma.xmlrpc.*;
+
+public class JavaServer {
+
+    public JavaServer () {
+        // Our handler is a regular Java object. It can have a
+        // constructor and member variables in the ordinary fashion.
+        // Public methods will be exposed to XML-RPC clients.
+    }
+
+    public Hashtable reajustaSalario (String nome, String cargo, double salario) {
+        Hashtable result = new Hashtable();
+        double reajuste;
+        switch (cargo){
+        case "operador":
+	        reajuste = salario + (salario * 0.2);
+	        result.put("novoSalario", new Double(reajuste));
+        	result.put("nomeRecebido", new String(nome));
+        break;
+        case "programador":
+        	reajuste = salario + (salario * 0.18);
+            result.put("novoSalario", new Double(reajuste));
+            result.put("nomeRecebido", new String(nome));
+        break;
+        }
+        return result;
+    }
+
+    public Hashtable verificaMaioridade (String nome, String sexo, int idade) {
+        Hashtable result = new Hashtable();
+        switch (sexo){
+        case "M":
+	        if(idade < 18){
+		        result.put("menorMaior", new String("menor de Idade"));
+	        	result.put("nomeRecebido", new String(nome));
+        	}
+        	else{
+        		result.put("menorMaior", new String("maior de Idade"));
+            	result.put("nomeRecebido", new String(nome));
+        	}
+        break;
+        case "F":
+        	if(idade < 21){
+		        result.put("menorMaior", new String("menor de Idade"));
+	        	result.put("nomeRecebido", new String(nome));
+        	}
+        	else{
+        		result.put("menorMaior", new String("maior de Idade"));
+            	result.put("nomeRecebido", new String(nome));
+        	}
+        break;
+        }
+        return result;
+    }
+    
+    public Hashtable verificaMedia (double nota1, double nota2, double nota3) {
+        Hashtable result = new Hashtable();
+        double media = (nota1 + nota2) / 2;
+        double mediaFinal = ((media+nota3)/2);
+        String situacao;
+        
+        if(media > 7){
+	        situacao = "Estudante aprovado!";
+	        result.put("media", new Double(media));
+        	result.put("situacao", new String(situacao));
+        }else if(mediaFinal > 5){
+        	situacao = "Estudante realizou exame N3 e foi aprovado";
+        	result.put("media", new Double(mediaFinal));
+        	result.put("situacao", new String(situacao));
+        }else if(media > 3 && media < 7){
+        	situacao = "Estudante devera realizar exame N3!";
+        	result.put("media", new Double(media));
+        	result.put("situacao", new String(situacao));
+        }else{
+        	situacao = "Estudante reprovado!";
+        	result.put("media", new Double(media));
+        	result.put("situacao", new String(situacao));
+        }
+        return result;
+    }
+
+    public Hashtable calculaPesoIdeal (double altura, String sexo) {
+        Hashtable result = new Hashtable();
+        double pesoIdeal;
+        
+        switch(sexo){
+        case "M":
+        	pesoIdeal = ((72.7 * altura) - 58);
+        	result.put("pesoIdeal", new Double(pesoIdeal));
+        	result.put("sexoRecebido", new String(sexo));
+        break;
+        case "F":
+        	pesoIdeal = ((62.1 * altura) - 44.7);
+        	result.put("pesoIdeal", new Double(pesoIdeal));
+        	result.put("sexoRecebido", new String(sexo));
+        break;
+        }
+        
+        return result;
+    }
+    
+    public Hashtable classificaNadador (int idade) {
+        String categoria;
+    	Hashtable result = new Hashtable();
+        
+        if(idade >= 5 && idade < 8){
+        	categoria = "Infantil A";
+    	}else if(idade >= 8 && idade < 11){
+    		categoria = "Infantil B";
+    	}else if(idade >= 11 && idade < 14){
+    		categoria = " Juvenil A";
+    	}else if(idade >= 14 && idade < 18){
+    		categoria = "Juvenil B";
+    	}else if(idade >= 18){
+    		categoria = "Adulto";
+    	}else{
+    		categoria = "A idade informada nao pode ser relacionada a nenhuma categoria";
+    	}
+        
+        result.put("categoria", new String(categoria));
+        
+        return result;
+    }
+    
+    public Hashtable calculaSalarioLiquido (String nome, String nivel, double salario, int numDepend) {
+        Hashtable result = new Hashtable();
+        double reajuste, salarioLiquido, salBruto;
+        
+        switch(nivel){
+		case "A":
+			if(numDepend >= 1){
+				salarioLiquido = (salBruto - (salBruto * 0.08));
+			}else{
+				salarioLiquido = (salBruto - (salBruto * 0.03));
+			}
+			break;
+
+			case "B":
+			if(numDepend >= 1){
+				salarioLiquido = (salBruto - (salBruto * 0.1));
+			}else{
+				salarioLiquido = (salBruto - (salBruto * 0.05));
+			}
+			break;
+
+		case "C":
+			if(numDepend >= 1){
+				salarioLiquido = (salBruto - (salBruto * 0.15));
+			}else{
+				salarioLiquido = (salBruto - (salBruto * 0.08));
+			}
+			break;
+
+		case "D":
+			if(numDepend >= 1){
+				salarioLiquido = (salBruto - (salBruto * 0.17));
+			}else{
+				salarioLiquido = (salBruto - (salBruto * 0.1));
+			}
+			break;
+	}
+        reajuste = salario + (salario * 0.2);
+        result.put("novoSalario", new Double(reajuste));
+    	result.put("nomeRecebido", new String(nome));
+     
+        return result;
+    }
+    
+    
+    
+    public static void main (String [] args) {
+        try {
+            
+            // Invoke me as <http://localhost:8080/RPC2>.
+            WebServer server = new WebServer(8080);
+            server.addHandler("sample", new JavaServer());
+            server.start();
+            
+            System.out.println("Started succesfully.");
+			System.out.println("Accepting requests. (Halt program to stop.)");
+
+        } catch (Exception exception) {
+            System.err.println("JavaServer: " + exception.toString());
+        }
+    }
+}
