@@ -11,7 +11,7 @@ em um dispositivo IOS através do navegador Safari.<br> Para verificar edições
 
 <strong>Descrição: Implementação da Lista de Exercícios com a utilização de Remote Procedure Calls (Solução RPC)</strong><br>
 <strong>Linguagens e Tecnlogias:</strong> Java, XML-RPC Protocol, IDE Eclipse<br>
-<strong>OBS:</strong> Para executar o projeto inicie o servidor através do arquivo "JavaServer". No diretório do projeto 
+<strong>OBS:</strong> Para executar o projeto inicie o servidor através do arquivo "JavaServer" e em seguida o cliente através do arquivo "JavaClient". No diretório do projeto 
 "Lista_Node" há o documento PDF contendo a descrição dos exercícios. Dentro do diretório desta implementação você pode encontrar capturas de tela do projeto em funcionamento (Client / Server) utilizando a IDE Eclipse para execução.
 
 <br>
