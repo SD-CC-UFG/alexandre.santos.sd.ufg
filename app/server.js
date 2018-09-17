@@ -1,8 +1,10 @@
 const express = require('express') /*Chamar o express*/
 const server = express() /*Criando o server (createserver do HTTP)*/
-server.set('view engine', 'pug')
+server.set('view engine', 'pug') //Indica mecanismo de modelo/visualização a ser usado
+
 
 var bodyParser = require('body-parser')
+
 server.use(bodyParser.urlencoded({
 	extended : true
 }))
