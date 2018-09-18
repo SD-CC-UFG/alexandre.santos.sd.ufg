@@ -1,5 +1,8 @@
 package listaRmi;
 
+/*Autor: Alexandre Oliveira dos Santos
+ */
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 

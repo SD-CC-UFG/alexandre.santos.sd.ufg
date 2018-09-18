@@ -1,5 +1,8 @@
 package listaRmi;
 
+/*Autor: Alexandre Oliveira dos Santos
+ */
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;

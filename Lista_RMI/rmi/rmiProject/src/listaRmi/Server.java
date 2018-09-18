@@ -1,11 +1,14 @@
 package listaRmi;
 
+/*Autor: Alexandre Oliveira dos Santos
+ */
+
 import java.rmi.Naming;
 import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
 
 public class Server {
-	static String IP = "192.168.1.4";
+	static String IP = "127.0.0.1";
 	static int PORTA = 1099;
 	
 	Server() {
