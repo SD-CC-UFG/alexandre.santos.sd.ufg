@@ -148,7 +148,7 @@ public class JavaServer {
 			}else{
 				salarioLiquido = (salBruto - (salBruto * 0.05));
 			}
-			break;
+		break;
 
 		case "C":
 			if(numDepend >= 1){
@@ -156,7 +156,7 @@ public class JavaServer {
 			}else{
 				salarioLiquido = (salBruto - (salBruto * 0.08));
 			}
-			break;
+		break;
 
 		case "D":
 			if(numDepend >= 1){
@@ -164,7 +164,7 @@ public class JavaServer {
 			}else{
 				salarioLiquido = (salBruto - (salBruto * 0.1));
 			}
-			break;
+		break;
 	}
         
         result.put("salLiquido", new Double(salarioLiquido));
@@ -188,11 +188,11 @@ public class JavaServer {
 			break;
 	
 			case "F":
-			if(idade >= 60 && tempoServ >= 25){
-				situacao = "Apta para aposentadoria";
-			}else{
-				situacao = "Inapta para aposentadoria";
-			}
+    			if(idade >= 60 && tempoServ >= 25){
+    				situacao = "Apta para aposentadoria";
+    			}else{
+    				situacao = "Inapta para aposentadoria";
+    			}
 			break;
 	
 			default:
