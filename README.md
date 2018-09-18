@@ -1,7 +1,7 @@
 # alexandre.santos.sd.ufg
 
 <strong>Autor:</strong> Alexandre Oliveira dos Santos - Matrícula: 201407237 <br>
-<strong>Título:</strong> Arquivos da disciplina de Sistemas Distribuídos - Universidade Federal de Goiás - 2018-2. <br><br>
+<strong>Título:</strong> Arquivos da disciplina de Sistemas Distribuídos - Universidade Federal de Goiás - 2018-2. <br>
 
 <strong>Entrega 1 - Descrição: Implementação da Lista de Exercícios utilizando Node.JS e HTTP - (Solução Cliente-Servidor)</strong><br>
 <strong>Pré-Requisitos:</strong> NPM, Node.JS - Express, BodyParser, Pug Template Engine.<br>
