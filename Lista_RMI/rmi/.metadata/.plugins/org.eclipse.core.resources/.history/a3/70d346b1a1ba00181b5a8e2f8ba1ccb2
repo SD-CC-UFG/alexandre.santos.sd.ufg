@@ -1,0 +1,7 @@
+package thiagoHm;
+
+//import java.rmi.Remote;
+
+public interface ICalculator extends import java.rmi.Remote {
+	double soma(double a, double b) throws RemoteException;
+}

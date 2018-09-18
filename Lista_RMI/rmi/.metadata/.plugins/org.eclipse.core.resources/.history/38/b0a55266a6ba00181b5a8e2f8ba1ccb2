@@ -1,0 +1,5 @@
+package thiagoHmGithub;
+
+public interface ICalculator extends java.rmi.Remote{
+	
+}

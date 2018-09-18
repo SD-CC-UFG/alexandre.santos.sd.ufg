@@ -1,0 +1,33 @@
+package ProgDan;
+import java.rmi.*;
+import java.rmi.server.*;
+import java.net.*;
+
+public class servidor extends UnicastRemoteObject implements Hello{
+	
+	public servidor() throws RemoteException{
+		super();
+	}
+	
+	/**
+	 * Método remoto
+	 */
+	
+    @Override
+    public String sayHello()throws RemoteException{
+    	return("Oi cliente");
+    }
+	
+    public static void main(String[] args){
+    	try{
+    		servidor ser = new servidor();
+    		//Registra nome do servidor
+    		Naming.rebind("ServidorHello", ser);
+    		System.out.println("Servidor remoto is ready.");
+    	}
+    	catch(RemoteException e){
+    		
+    	}
+    }
+	
+}

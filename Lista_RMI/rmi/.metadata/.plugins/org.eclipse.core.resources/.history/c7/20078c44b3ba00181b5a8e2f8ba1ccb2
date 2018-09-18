@@ -1,0 +1,8 @@
+package listaRmi;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface Lista extends Remote {
+	public long reajustaSalario(String nome, String cargo, double salario) throws RemoteException;
+}

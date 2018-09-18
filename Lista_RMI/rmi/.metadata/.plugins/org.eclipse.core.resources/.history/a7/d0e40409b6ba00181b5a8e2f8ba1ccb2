@@ -1,0 +1,27 @@
+package calculadora;
+
+import java.rmi.Naming;
+import java.rmi.Remote;
+import java.rmi.registry.LocateRegistry;
+
+public class Server {
+	static String IP = "192.168.1.4";
+	static int porta = 1099;
+	Server() {
+		try{
+			System.setProperty("java.rmi.server.hostname", IP);
+			LocateRegistry.createRegistry(porta);
+			Calculadora c = new CalculadoraImple();
+			Naming.bind("CalculadoraService", (Remote) c);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		new Server();
+		System.out.println("Servidor em funcionamento em: " +IP +"Porta: " + porta);
+	}
+	
+}

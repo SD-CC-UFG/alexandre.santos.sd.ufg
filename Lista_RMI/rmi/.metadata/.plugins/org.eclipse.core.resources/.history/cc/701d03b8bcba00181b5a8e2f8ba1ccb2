@@ -1,0 +1,18 @@
+package listaRmi;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.Vector;
+
+
+public interface Lista extends Remote {
+	//Verificar como retirar o long e colocar outros tipos de saída
+	public Object reajustaSalario(String nome, String cargo, double salario) throws RemoteException;
+	public long verificaMaioridade(String nome, String sexo, int idade) throws RemoteException;
+	public long verificaMedia(double nota1, double nota2, double nota3) throws RemoteException;
+	public long calculaPesoIdeal(double altura, String sexo) throws RemoteException;
+	public long classificaNadador(int idade) throws RemoteException;
+	public long calculaSalarioLiquido(String nome, String nivel, double salario, int numDepend) throws RemoteException;
+	public long verificaAposentadoria(String sexo, int tempoServ, int idade) throws RemoteException;
+	public double concederCredito(double saldoMedio) throws RemoteException;
+}

@@ -1,0 +1,18 @@
+/*Autor: Alexandre Oliveira dos Santos - 201407237
+ * Código adaptado de: https://github.com/tiagohm/rmi-java
+* */
+
+package thiagoHmGithub;
+
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+/*O cliente é responsável por acessar um objeto remotamente 
+ * por meio de um IP e um nome
+ * @param <T> Tipo do objeto a ser acessado*/
+
+public class Client {
+
+}

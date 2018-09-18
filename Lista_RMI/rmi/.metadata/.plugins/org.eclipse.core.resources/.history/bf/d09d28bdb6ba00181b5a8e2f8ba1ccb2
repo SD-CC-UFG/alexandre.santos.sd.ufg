@@ -1,0 +1,16 @@
+package listaRmi;
+
+import java.rmi.Naming;
+
+public class Client {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		try{
+			Lista l = (Lista) Naming.lookup("rmi://192.168.1.4:1099/CalculadoraService");
+			System.out.println("Adição : " +l.reajustaSalario(String nome, String cargo, double salario));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+}
+

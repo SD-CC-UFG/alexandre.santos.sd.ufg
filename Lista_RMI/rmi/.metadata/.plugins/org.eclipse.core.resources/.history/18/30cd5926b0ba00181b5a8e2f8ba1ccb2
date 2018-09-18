@@ -1,0 +1,13 @@
+package calculadora;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class CalculadoraImple extends UnicastRemoteObject implements Calculadora {
+	protected CalculadoraImple() throws RemoteException{
+		super();
+	}
+	
+	
+	
+}

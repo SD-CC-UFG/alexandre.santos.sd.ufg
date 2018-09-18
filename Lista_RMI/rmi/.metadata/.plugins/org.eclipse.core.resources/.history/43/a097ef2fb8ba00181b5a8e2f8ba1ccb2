@@ -1,0 +1,47 @@
+package listaRmi;
+
+import java.rmi.Naming;
+import java.util.Scanner;
+
+public class Client {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Informe o numero da questao (1 - 8): ");
+		int questao = scan.nextInt();
+    	scan.nextLine();
+		
+    	String nome, cargo, sexo, menorMaior;
+    	double salario = 0;
+    	int idade = 0;
+    	
+		try{
+			Lista l = (Lista) Naming.lookup("rmi://192.168.1.4:1099/ListaService");
+			
+			switch(questao){
+			case 1:
+				System.out.println("Informe o nome do Funcionario: \n");
+	        	nome = scan.nextLine();
+	        	System.out.println("Informe o cargo do Funcionario: \n");
+	        	cargo = scan.nextLine();
+	        	System.out.println("Informe o salario atual do Funcionario: \n");
+	        	salario = scan.nextInt();
+	        	
+				System.out.println("Adição : " +l.reajustaSalario(nome, cargo, salario));
+			break;
+			case 2:
+				System.out.println("Informe o nome do usuario: \n");
+            	nome = scan.nextLine();
+            	System.out.println("Informe o sexo do usuario (F ou M): \n");
+            	sexo = scan.nextLine();
+            	System.out.println("Informe a idade do usuario: \n");
+            	idade = scan.nextInt();
+            	
+			break;	
+				
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+}
+

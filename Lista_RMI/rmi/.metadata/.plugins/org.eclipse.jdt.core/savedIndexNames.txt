@@ -1,0 +1,6 @@
+INDEX VERSION 1.130+C:\Users\alexa\Desktop\Java\rmi\.metadata\.plugins\org.eclipse.jdt.core
+388456993.index
+2181188908.index
+2559830796.index
+2083094348.index
+4101324997.index

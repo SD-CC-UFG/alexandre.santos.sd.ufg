@@ -1,0 +1,8 @@
+package ProgDan;
+import java.rmi.*;
+import java.rmi.server.*;
+import java.net.*;
+
+public class servidor {
+
+}

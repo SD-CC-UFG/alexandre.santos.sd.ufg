@@ -1,0 +1,89 @@
+package listaRmi;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class ListaImple extends UnicastRemoteObject implements Lista {
+
+	private static final long serialVersionUID = 1L;
+	
+	//Variáveis a serem utilizadas
+	String nome, cargo, sexo, menorMaior, categoria, nivel, status, media, situacao;
+	double salario = 0, nota1 = 0, nota2 = 0, nota3 = 0, altura = 0, salBruto = 0, salLiquido = 0, saldoMedio =0, valCredito = 0;
+	int idade = 0, numDepend = 0, tempoServ = 0;
+	
+	//Criando Array de Objects
+	private Object[] o;
+	
+	protected ListaImple() throws RemoteException{
+		super();
+	}
+	
+	public Object reajustaSalario(String nome, String cargo, double salario) throws RemoteException{
+		double reajuste;
+        switch (cargo){
+        case "operador":
+	        reajuste = salario + (salario * 0.2);
+        break;
+        case "programador":
+        	reajuste = salario + (salario * 0.18);
+        break;
+        }
+        o = new Object[2];
+		o[0] = nome;
+		o[1] = salario;
+		return o;
+	}
+	
+	public Object verificaMaioridade(String nome, String sexo, int idade) throws RemoteException{
+		switch (sexo){
+        case "M":
+	        if(idade < 18){
+		        status = "menor de Idade";
+        	}
+        	else{
+        		status = "maior de idade";
+        	}
+        break;
+        case "F":
+        	if(idade < 21){
+		        status = "menor de idade";
+        	}
+        	else{
+        		status = "maior de idade";
+        	}
+        break;
+        }
+        o = new Object[2];
+		o[0] = nome;
+		o[1] = status;
+		return o;
+	}
+
+	public Object verificaMedia(double nota1, double nota2, double nota3) throws RemoteException{
+		media = (nota1 + nota2) / 2;
+        mediaFinal = ((media+nota3)/2);
+		if(media > 7){
+	        situacao = "Estudante aprovado!";
+	        result.put("media", new Double(media));
+        	result.put("situacao", new String(situacao));
+        }else if(mediaFinal > 5){
+        	situacao = "Estudante realizou exame N3 e foi aprovado";
+        	result.put("media", new Double(mediaFinal));
+        	result.put("situacao", new String(situacao));
+        }else if(media > 3 && media < 7){
+        	situacao = "Estudante devera realizar exame N3!";
+        	result.put("media", new Double(media));
+        	result.put("situacao", new String(situacao));
+        }else{
+        	situacao = "Estudante reprovado!";
+        	result.put("media", new Double(media));
+        	result.put("situacao", new String(situacao));
+        }
+        o = new Object[2];
+		o[0] = media;
+		o[1] = situacao;
+		return o;
+	}
+	
+}

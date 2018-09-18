@@ -1,0 +1,231 @@
+package listaRmi;
+
+import java.rmi.Naming;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.*;
+import java.io.Serializable;
+import java.io.IOException;
+
+public class Client implements Serializable{
+	private static final long serialVersionUID = 1L;
+
+	public static void main(String[] args) throws JSONException, IOException {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Informe o numero da questao (1 - 8): ");
+		int questao = scan.nextInt();
+    	scan.nextLine();
+		
+    	//Variáveis a serem utilizadas
+    	String nome, cargo, sexo, menorMaior, categoria, nivel;
+    	double salario = 0, nota1 = 0, nota2 = 0, nota3 = 0, altura = 0, salBruto = 0, salLiquido = 0, saldoMedio =0, valCredito = 0;
+    	int idade = 0, numDepend = 0, tempoServ = 0;
+    	Object[] o = new Object[5];
+    	Object objeto = null;
+    	
+		try{
+			Lista l = (Lista) Naming.lookup("rmi://192.168.1.4:1099/ListaService");
+			
+			switch(questao){
+			case 1:
+				System.out.println("Informe o nome do Funcionario: \n");
+	        	nome = scan.nextLine();
+	        	System.out.println("Informe o cargo do Funcionario: \n");
+	        	cargo = scan.nextLine();
+	        	System.out.println("Informe o salario atual do Funcionario: \n");
+	        	salario = scan.nextInt();
+	        	
+	        	Map<String, String> numberMappingQ1 = new HashMap<>();
+            	numberMappingQ1 = (Map<String, String>) l.reajustaSalario(String nome, String cargo, double salario);
+            	System.out.println(numberMappingQ1);
+	        	
+			break;
+			case 2:
+				System.out.println("Informe o nome do usuario: \n");
+            	nome = scan.nextLine();
+            	System.out.println("Informe o sexo do usuario (F ou M): \n");
+            	sexo = scan.nextLine();
+            	System.out.println("Informe a idade do usuario: \n");
+            	idade = scan.nextInt();
+            	
+            	Map<String, String> numberMappingQ2 = new HashMap<>();
+            	numberMappingQ2 = (Map<String, String>) l.verificaMaioridade(nome, sexo, idade);
+            	System.out.println(numberMappingQ2);
+            	
+			break;
+			
+			case 3:
+				System.out.println("Informe a nota N1: \n");
+            	nota1 = scan.nextDouble();
+            	System.out.println("Informe a nota N2: \n");
+            	nota2 = scan.nextDouble();
+            	System.out.println("Informe a nota N3: \n");
+            	nota3 = scan.nextDouble();
+            	Map<String, String> numberMappingQ3 = new HashMap<>();
+            	numberMappingQ3 = (Map<String, String>) l.verificaMedia(nota1, nota2, nota3);
+            	System.out.println(numberMappingQ3);
+			break;
+			
+			case 4:
+				System.out.println("Informe o sexo: F ou M");
+            	sexo = scan.nextLine();
+            	System.out.println("Informe a altura: \n");
+            	altura = scan.nextDouble();
+            	
+            	System.out.println("Peso Ideal/Sexo: " +l.calculaPesoIdeal(altura, sexo));
+			break;
+			
+			case 5:
+				System.out.println("Informe a idade");
+            	idade = scan.nextInt();
+            	
+            	System.out.println("Categoria do Nadador: " +l.classificaNadador(idade));
+			break;
+			
+			case 6:
+				System.out.println("Informe o nome: ");
+            	nome = scan.nextLine();
+            	System.out.println("Informe o nível (A, B, C ou D): \n");
+            	nivel = scan.nextLine();
+            	System.out.println("Informe o salário bruto: \n");
+            	salBruto = scan.nextDouble();
+            	System.out.println("Informe o número de dependentes: \n");
+            	numDepend = scan.nextInt();
+            	
+            	System.out.println("Salário Líquido/Nome/Nível: " +l.calculaSalarioLiquido(nome, nivel, salario, numDepend));
+			break;
+			
+			case 7:
+				System.out.println("Informe o sexo (M ou F): ");
+            	sexo = scan.nextLine();
+            	System.out.println("Informe a idade: \n");
+            	idade = scan.nextInt();
+            	System.out.println("Informe o tempo de serviço: \n");
+            	tempoServ = scan.nextInt();
+            	
+            	System.out.println("Sexo/Idade/Situação para aposentadoria: " +l.verificaAposentadoria(sexo, tempoServ, idade));
+			break;
+			
+			case 8:
+				System.out.println("Informe o saldo medio do cliente: ");
+            	saldoMedio = scan.nextDouble();
+            	
+            	System.out.println("Saldo Médio/Valor Crédito disponível: " +l.concederCredito(saldoMedio));
+            break;
+			
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+}
+
+
+/*public class Client implements Serializable{
+	private static final long serialVersionUID = 1L;
+
+	public static void main(String[] args) throws JSONException, IOException {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Informe o numero da questao (1 - 8): ");
+		int questao = scan.nextInt();
+    	scan.nextLine();
+		
+    	//Variáveis a serem utilizadas
+    	String nome, cargo, sexo, menorMaior, categoria, nivel;
+    	double salario = 0, nota1 = 0, nota2 = 0, nota3 = 0, altura = 0, salBruto = 0, salLiquido = 0, saldoMedio =0, valCredito = 0;
+    	int idade = 0, numDepend = 0, tempoServ = 0;
+    	Object[] o = new Object[5];
+    	
+		try{
+			Lista l = (Lista) Naming.lookup("rmi://192.168.1.4:1099/ListaService");
+			
+			switch(questao){
+			case 1:
+				System.out.println("Informe o nome do Funcionario: \n");
+	        	nome = scan.nextLine();
+	        	System.out.println("Informe o cargo do Funcionario: \n");
+	        	cargo = scan.nextLine();
+	        	System.out.println("Informe o salario atual do Funcionario: \n");
+	        	salario = scan.nextInt();
+	        	nome = l.reajustaSalario(nome, cargo, salario).getString("nome");
+	        	salLiquido = l.reajustaSalario(nome, cargo, salario).getDouble("novoSalario");
+	        	System.out.println("Nome: "+nome +". Salário Reajustado: " +salLiquido);
+			break;
+			case 2:
+				System.out.println("Informe o nome do usuario: \n");
+            	nome = scan.nextLine();
+            	System.out.println("Informe o sexo do usuario (F ou M): \n");
+            	sexo = scan.nextLine();
+            	System.out.println("Informe a idade do usuario: \n");
+            	idade = scan.nextInt();
+            	
+            	System.out.println("Nome/Status : " +l.verificaMaioridade(nome, sexo, idade).toString());
+			break;
+			
+			case 3:
+				System.out.println("Informe a nota N1: \n");
+            	nota1 = scan.nextDouble();
+            	System.out.println("Informe a nota N2: \n");
+            	nota2 = scan.nextDouble();
+            	System.out.println("Informe a nota N3: \n");
+            	nota3 = scan.nextDouble();
+            	System.out.println("Média/Situação : " +l.verificaMedia(nota1, nota2, nota3));
+			break;
+			
+			case 4:
+				System.out.println("Informe o sexo: F ou M");
+            	sexo = scan.nextLine();
+            	System.out.println("Informe a altura: \n");
+            	altura = scan.nextDouble();
+            	
+            	System.out.println("Peso Ideal/Sexo: " +l.calculaPesoIdeal(altura, sexo));
+			break;
+			
+			case 5:
+				System.out.println("Informe a idade");
+            	idade = scan.nextInt();
+            	
+            	System.out.println("Categoria do Nadador: " +l.classificaNadador(idade));
+			break;
+			
+			case 6:
+				System.out.println("Informe o nome: ");
+            	nome = scan.nextLine();
+            	System.out.println("Informe o nível (A, B, C ou D): \n");
+            	nivel = scan.nextLine();
+            	System.out.println("Informe o salário bruto: \n");
+            	salBruto = scan.nextDouble();
+            	System.out.println("Informe o número de dependentes: \n");
+            	numDepend = scan.nextInt();
+            	
+            	System.out.println("Salário Líquido/Nome/Nível: " +l.calculaSalarioLiquido(nome, nivel, salario, numDepend));
+			break;
+			
+			case 7:
+				System.out.println("Informe o sexo (M ou F): ");
+            	sexo = scan.nextLine();
+            	System.out.println("Informe a idade: \n");
+            	idade = scan.nextInt();
+            	System.out.println("Informe o tempo de serviço: \n");
+            	tempoServ = scan.nextInt();
+            	
+            	System.out.println("Sexo/Idade/Situação para aposentadoria: " +l.verificaAposentadoria(sexo, tempoServ, idade));
+			break;
+			
+			case 8:
+				System.out.println("Informe o saldo medio do cliente: ");
+            	saldoMedio = scan.nextDouble();
+            	
+            	System.out.println("Saldo Médio/Valor Crédito disponível: " +l.concederCredito(saldoMedio));
+            break;
+			
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+}*/
+

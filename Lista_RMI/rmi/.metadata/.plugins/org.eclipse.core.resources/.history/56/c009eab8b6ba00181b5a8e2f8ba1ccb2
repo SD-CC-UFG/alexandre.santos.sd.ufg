@@ -1,0 +1,15 @@
+package listaRmi;
+
+import java.rmi.Naming;
+
+public class Client {
+	public static void main(String[] args) {
+		try{
+			Lista l = (Lista) Naming.lookup("rmi://192.168.1.4:1099/CalculadoraService");
+			System.out.println("Adição : " +l.add(10, 15));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+}
+

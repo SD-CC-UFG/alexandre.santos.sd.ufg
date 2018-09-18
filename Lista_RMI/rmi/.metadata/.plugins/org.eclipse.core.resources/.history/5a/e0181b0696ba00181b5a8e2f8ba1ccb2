@@ -1,0 +1,9 @@
+package chatRMI;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface ServidorChat extends Remote{
+	public String conectar(Cliente c) throws RemoteException;
+	
+}

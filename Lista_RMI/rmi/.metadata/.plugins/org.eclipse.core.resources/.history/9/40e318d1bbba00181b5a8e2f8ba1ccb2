@@ -1,0 +1,37 @@
+package listaRmi;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class ListaImple extends UnicastRemoteObject implements Lista {
+
+	private static final long serialVersionUID = 1L;
+	
+	//Variáveis a serem utilizadas
+	String nome, cargo, sexo, menorMaior, categoria, nivel;
+	double salario = 0, nota1 = 0, nota2 = 0, nota3 = 0, altura = 0, salBruto = 0, salLiquido = 0, saldoMedio =0, valCredito = 0;
+	int idade = 0, numDepend = 0, tempoServ = 0;
+	private Object[] o = new Object[5];
+	
+	protected ListaImple() throws RemoteException{
+		super();
+	}
+	
+	public long reajustaSalario(String nome, String cargo, double salario) throws RemoteException{
+		double reajuste;
+        switch (cargo){
+        case "operador":
+	        reajuste = salario + (salario * 0.2);
+	        result.put("novoSalario", new Double(reajuste));
+        	result.put("nomeRecebido", new String(nome));
+        break;
+        case "programador":
+        	reajuste = salario + (salario * 0.18);
+            result.put("novoSalario", new Double(reajuste));
+            result.put("nomeRecebido", new String(nome));
+        break;
+        }
+		return a + b;
+	}
+	
+}

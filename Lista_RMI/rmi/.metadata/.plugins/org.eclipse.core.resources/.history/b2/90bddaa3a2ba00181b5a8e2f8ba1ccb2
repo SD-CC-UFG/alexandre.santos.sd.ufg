@@ -1,0 +1,12 @@
+package thiagoHm;
+
+import java.rmi.server.UnicastRemoteObject;
+import java.rmi.RemoteException;
+
+public class Calculator extends UnicastRemoteObject implements ICalculator {
+	@Overide
+	public double soma(double a, double b) throws RemoteException {
+		return a + b;
+	}
+	
+}

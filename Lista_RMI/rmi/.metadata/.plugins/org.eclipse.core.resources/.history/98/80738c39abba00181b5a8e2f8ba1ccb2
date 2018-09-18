@@ -1,0 +1,16 @@
+package ProgDan;
+
+import java.rmi.Naming;
+import java.rmi.*;
+
+public class cliente {
+	public static void main(String[] args){
+		try{
+			System.setProperty("java.rmi.server.hostname", "localhost");
+			
+			servidor serv = (servidor)Naming.lookup("rmi://localhost:2048/ServidorHello");
+			String retorno = serv.sayHello();
+		}catch(Exception e){};
+	}
+	
+}

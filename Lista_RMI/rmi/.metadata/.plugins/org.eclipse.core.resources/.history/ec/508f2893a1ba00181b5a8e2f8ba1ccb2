@@ -1,0 +1,5 @@
+package thiagoHm;
+
+public interface ICalculator {
+
+}

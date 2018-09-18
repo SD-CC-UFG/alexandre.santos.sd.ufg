@@ -1,0 +1,7 @@
+package chatRMI;
+
+import java.rmi.Remote;
+
+public interface ServidorChat extends Remote{
+	
+}

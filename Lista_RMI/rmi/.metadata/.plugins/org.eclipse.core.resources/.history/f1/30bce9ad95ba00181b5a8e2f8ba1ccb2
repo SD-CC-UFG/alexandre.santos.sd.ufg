@@ -1,0 +1,5 @@
+package chatRMI;
+
+public interface ServidorChat {
+
+}

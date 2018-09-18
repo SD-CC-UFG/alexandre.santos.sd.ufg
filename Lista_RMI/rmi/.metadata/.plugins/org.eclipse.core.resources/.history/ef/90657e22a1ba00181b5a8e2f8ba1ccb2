@@ -1,0 +1,11 @@
+package chatRMI;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class ServidorImpl extends UnicastRemoteObject implements ServidorChat{
+	public String conectar(Cliente c) throws RemoteException{
+		conectados.addElement(0);
+		
+	}
+}

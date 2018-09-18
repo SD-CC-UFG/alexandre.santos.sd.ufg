@@ -1,0 +1,6 @@
+package thiagoHmGithub;
+/*Interface implementada no lado Server*/
+
+public class Calculator {
+
+}

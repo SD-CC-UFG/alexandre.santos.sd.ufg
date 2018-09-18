@@ -1,0 +1,11 @@
+package listaRmi;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface Lista extends Remote {
+	//Ver como retirar o long e colocar outros tipos de saída
+	public long reajustaSalario(String nome, String cargo, double salario) throws RemoteException;
+	public long verificaMaioridade(String nome, String sexo, int idade) throws RemoteException;
+	public long verifica Media(long a, long b) throws RemoteException;
+}

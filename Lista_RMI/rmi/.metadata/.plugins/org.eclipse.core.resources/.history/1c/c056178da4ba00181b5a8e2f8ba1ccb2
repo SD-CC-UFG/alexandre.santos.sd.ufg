@@ -1,0 +1,14 @@
+/*Autor: Alexandre Oliveira dos Santos - 201407237
+ * Código adaptado de: https://github.com/tiagohm/rmi-java
+* */
+
+package thiagoHmGithub;
+
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public class Client {
+
+}

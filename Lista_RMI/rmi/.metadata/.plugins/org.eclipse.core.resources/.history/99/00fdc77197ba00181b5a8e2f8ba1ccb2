@@ -1,0 +1,5 @@
+package chatRMI;
+
+public class ServidorImpl {
+
+}

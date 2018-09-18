@@ -1,0 +1,10 @@
+package thiagoHmGithub;
+/*Interface implementada no lado Server*/
+
+import java.rmi.server.UnicastRemoteObject;
+
+public class Calculator extends UnicastRemoteObject implements ICalculator {
+	
+	
+	
+}

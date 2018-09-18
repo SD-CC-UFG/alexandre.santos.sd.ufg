@@ -1,0 +1,10 @@
+package calculadora;
+
+public class Server {
+	CalculadoraServer(){
+		try{
+			System.setProperty("java.rmi.server.hostname", "192.168.1.4");
+			
+		}
+	}
+}
