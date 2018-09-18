@@ -1,7 +1,6 @@
 package listaRPC;
 
 /*Autor: Alexandre Oliveira dos Santos
- * Código adaptado de: http://tldp.org/HOWTO/XML-RPC-HOWTO/xmlrpc-howto-java.html
  */
 
 import java.util.Hashtable;
@@ -20,12 +19,12 @@ public class JavaServer {
         double reajuste;
         switch (cargo){
         case "operador":
-	        reajuste = salario + (salario * 0.2);
-	        result.put("novoSalario", new Double(reajuste));
-        	result.put("nomeRecebido", new String(nome));
+            reajuste = salario + (salario * 0.2);
+            result.put("novoSalario", new Double(reajuste));
+            result.put("nomeRecebido", new String(nome));
         break;
         case "programador":
-        	reajuste = salario + (salario * 0.18);
+            reajuste = salario + (salario * 0.18);
             result.put("novoSalario", new Double(reajuste));
             result.put("nomeRecebido", new String(nome));
         break;
@@ -37,24 +36,24 @@ public class JavaServer {
         Hashtable result = new Hashtable();
         switch (sexo){
         case "M":
-	        if(idade < 18){
-		        result.put("menorMaior", new String("menor de Idade"));
-	        	result.put("nomeRecebido", new String(nome));
-        	}
-        	else{
-        		result.put("menorMaior", new String("maior de Idade"));
-            	result.put("nomeRecebido", new String(nome));
-        	}
+            if(idade < 18){
+                result.put("menorMaior", new String("menor de Idade"));
+                result.put("nomeRecebido", new String(nome));
+            }
+            else{
+                result.put("menorMaior", new String("maior de Idade"));
+                result.put("nomeRecebido", new String(nome));
+            }
         break;
         case "F":
-        	if(idade < 21){
-		        result.put("menorMaior", new String("menor de Idade"));
-	        	result.put("nomeRecebido", new String(nome));
-        	}
-        	else{
-        		result.put("menorMaior", new String("maior de Idade"));
-            	result.put("nomeRecebido", new String(nome));
-        	}
+            if(idade < 21){
+                result.put("menorMaior", new String("menor de Idade"));
+                result.put("nomeRecebido", new String(nome));
+            }
+            else{
+                result.put("menorMaior", new String("maior de Idade"));
+                result.put("nomeRecebido", new String(nome));
+            }
         break;
         }
         return result;
@@ -67,21 +66,21 @@ public class JavaServer {
         String situacao;
         
         if(media > 7){
-	        situacao = "Estudante aprovado!";
-	        result.put("media", new Double(media));
-        	result.put("situacao", new String(situacao));
+            situacao = "Estudante aprovado!";
+            result.put("media", new Double(media));
+            result.put("situacao", new String(situacao));
         }else if(mediaFinal > 5){
-        	situacao = "Estudante realizou exame N3 e foi aprovado";
-        	result.put("media", new Double(mediaFinal));
-        	result.put("situacao", new String(situacao));
+            situacao = "Estudante realizou exame N3 e foi aprovado";
+            result.put("media", new Double(mediaFinal));
+            result.put("situacao", new String(situacao));
         }else if(media > 3 && media < 7){
-        	situacao = "Estudante devera realizar exame N3!";
-        	result.put("media", new Double(media));
-        	result.put("situacao", new String(situacao));
+            situacao = "Estudante devera realizar exame N3!";
+            result.put("media", new Double(media));
+            result.put("situacao", new String(situacao));
         }else{
-        	situacao = "Estudante reprovado!";
-        	result.put("media", new Double(media));
-        	result.put("situacao", new String(situacao));
+            situacao = "Estudante reprovado!";
+            result.put("media", new Double(media));
+            result.put("situacao", new String(situacao));
         }
         return result;
     }
@@ -92,14 +91,14 @@ public class JavaServer {
         
         switch(sexo){
         case "M":
-        	pesoIdeal = ((72.7 * altura) - 58);
-        	result.put("pesoIdeal", new Double(pesoIdeal));
-        	result.put("sexoRecebido", new String(sexo));
+            pesoIdeal = ((72.7 * altura) - 58);
+            result.put("pesoIdeal", new Double(pesoIdeal));
+            result.put("sexoRecebido", new String(sexo));
         break;
         case "F":
-        	pesoIdeal = ((62.1 * altura) - 44.7);
-        	result.put("pesoIdeal", new Double(pesoIdeal));
-        	result.put("sexoRecebido", new String(sexo));
+            pesoIdeal = ((62.1 * altura) - 44.7);
+            result.put("pesoIdeal", new Double(pesoIdeal));
+            result.put("sexoRecebido", new String(sexo));
         break;
         }
         
@@ -108,21 +107,21 @@ public class JavaServer {
     
     public Hashtable classificaNadador (int idade) {
         String categoria;
-    	Hashtable result = new Hashtable();
+        Hashtable result = new Hashtable();
         
         if(idade >= 5 && idade < 8){
-        	categoria = "Infantil A";
-    	}else if(idade >= 8 && idade < 11){
-    		categoria = "Infantil B";
-    	}else if(idade >= 11 && idade < 14){
-    		categoria = " Juvenil A";
-    	}else if(idade >= 14 && idade < 18){
-    		categoria = "Juvenil B";
-    	}else if(idade >= 18){
-    		categoria = "Adulto";
-    	}else{
-    		categoria = "A idade informada nao pode ser relacionada a nenhuma categoria";
-    	}
+            categoria = "Infantil A";
+        }else if(idade >= 8 && idade < 11){
+            categoria = "Infantil B";
+        }else if(idade >= 11 && idade < 14){
+            categoria = " Juvenil A";
+        }else if(idade >= 14 && idade < 18){
+            categoria = "Juvenil B";
+        }else if(idade >= 18){
+            categoria = "Adulto";
+        }else{
+            categoria = "A idade informada nao pode ser relacionada a nenhuma categoria";
+        }
         
         result.put("categoria", new String(categoria));
         
@@ -134,42 +133,42 @@ public class JavaServer {
         double salarioLiquido = 0;
         
         switch(nivel){
-		case "A":
-			if(numDepend >= 1){
-				salarioLiquido = (salBruto - (salBruto * 0.08));
-			}else{
-				salarioLiquido = (salBruto - (salBruto * 0.03));
-			}
-			break;
+        case "A":
+            if(numDepend >= 1){
+                salarioLiquido = (salBruto - (salBruto * 0.08));
+            }else{
+                salarioLiquido = (salBruto - (salBruto * 0.03));
+            }
+            break;
 
-			case "B":
-			if(numDepend >= 1){
-				salarioLiquido = (salBruto - (salBruto * 0.1));
-			}else{
-				salarioLiquido = (salBruto - (salBruto * 0.05));
-			}
-		break;
+            case "B":
+            if(numDepend >= 1){
+                salarioLiquido = (salBruto - (salBruto * 0.1));
+            }else{
+                salarioLiquido = (salBruto - (salBruto * 0.05));
+            }
+            break;
 
-		case "C":
-			if(numDepend >= 1){
-				salarioLiquido = (salBruto - (salBruto * 0.15));
-			}else{
-				salarioLiquido = (salBruto - (salBruto * 0.08));
-			}
-		break;
+        case "C":
+            if(numDepend >= 1){
+                salarioLiquido = (salBruto - (salBruto * 0.15));
+            }else{
+                salarioLiquido = (salBruto - (salBruto * 0.08));
+            }
+            break;
 
-		case "D":
-			if(numDepend >= 1){
-				salarioLiquido = (salBruto - (salBruto * 0.17));
-			}else{
-				salarioLiquido = (salBruto - (salBruto * 0.1));
-			}
-		break;
-	}
+        case "D":
+            if(numDepend >= 1){
+                salarioLiquido = (salBruto - (salBruto * 0.17));
+            }else{
+                salarioLiquido = (salBruto - (salBruto * 0.1));
+            }
+            break;
+    }
         
         result.put("salLiquido", new Double(salarioLiquido));
-    	result.put("nomeRecebido", new String(nome));
-    	result.put("nivelRecebido", new String(nivel));
+        result.put("nomeRecebido", new String(nome));
+        result.put("nivelRecebido", new String(nivel));
      
         return result;
     }
@@ -179,24 +178,24 @@ public class JavaServer {
         String situacao;
         
         switch(sexo){
-			case "M":
-				if(idade >= 65 && tempoServ >= 30){
-					situacao = "Apto para aposentadoria";
-				}else{
-					situacao = "Inapto para aposentadoria";
-				}
-			break;
-	
-			case "F":
-    			if(idade >= 60 && tempoServ >= 25){
-    				situacao = "Apta para aposentadoria";
-    			}else{
-    				situacao = "Inapta para aposentadoria";
-    			}
-			break;
-	
-			default:
-				situacao = "Verifique os valores inseridos e tente novamente";
+            case "M":
+                if(idade >= 65 && tempoServ >= 30){
+                    situacao = "Apto para aposentadoria";
+                }else{
+                    situacao = "Inapto para aposentadoria";
+                }
+            break;
+    
+            case "F":
+            if(idade >= 60 && tempoServ >= 25){
+                situacao = "Apta para aposentadoria";
+            }else{
+                situacao = "Inapta para aposentadoria";
+            }
+            break;
+    
+            default:
+                situacao = "Verifique os valores inseridos e tente novamente";
         }
 
         result.put("sexoRecebido", new String(sexo));
@@ -211,14 +210,14 @@ public class JavaServer {
         double valCredito = 0;
         
         if(saldoMedio < 201){
-    		valCredito = 0;
-    	}else if(saldoMedio >= 201 && saldoMedio < 401){
-    		valCredito = (saldoMedio * 0.2);
-    	}else if(saldoMedio >= 401 && saldoMedio < 601){
-    		valCredito = (saldoMedio * 0.3);
-    	}else if(saldoMedio >= 601){
-    		valCredito = (saldoMedio * 0.4);
-      	}
+            valCredito = 0;
+        }else if(saldoMedio >= 201 && saldoMedio < 401){
+            valCredito = (saldoMedio * 0.2);
+        }else if(saldoMedio >= 401 && saldoMedio < 601){
+            valCredito = (saldoMedio * 0.3);
+        }else if(saldoMedio >= 601){
+            valCredito = (saldoMedio * 0.4);
+        }
 
         result.put("saldoMedioRecebido", new Double(saldoMedio));
         result.put("valCredito", new Double(valCredito));
@@ -231,12 +230,12 @@ public class JavaServer {
         try {
             
             // Invoke me as <http://localhost:8080/RPC2>.
-            WebServer server = new WebServer(8080);
-            server.addHandler("sample", new JavaServer());
+            WebServer server = new WebServer(8080); //Cria a instancia de um server
+            server.addHandler("sample", new JavaServer()); //SOAP Message handlers can be used to process messages to and from a Web service
             server.start();
             
             System.out.println("Started succesfully.");
-			System.out.println("Accepting requests. (Halt program to stop.)");
+            System.out.println("Accepting requests. (Halt program to stop.)");
 
         } catch (Exception exception) {
             System.err.println("JavaServer: " + exception.toString());

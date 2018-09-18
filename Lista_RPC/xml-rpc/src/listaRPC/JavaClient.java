@@ -1,9 +1,11 @@
 package listaRPC;
 
-import java.util.Vector;
+/*Autor: Alexandre Oliveira dos Santos
+ */
+
+import java.util.Vector; //Criar array de objetos
 import java.util.Hashtable;
 import helma.xmlrpc.*;
-import org.apache.xerces.parsers.SAXParser;
 import java.util.Scanner;
 
 
@@ -14,13 +16,13 @@ public class JavaClient {
         "http://localhost:8080/RPC2";
 
     public static void main (String [] args) {
-    		Scanner scan = new Scanner(System.in);
-        	
-    		System.out.println("Informe o número da questão que deseja resolver: \n");
-        	int questao = scan.nextInt();
-        	scan.nextLine();
-        	
-    	try {
+            Scanner scan = new Scanner(System.in);
+            
+            System.out.println("Informe o número da questão que deseja resolver: \n");
+            int questao = scan.nextInt();
+            scan.nextLine();
+            
+        try {
 
             // Create an object to represent our server.
             XmlRpcClient server = new XmlRpcClient(server_url);
@@ -30,57 +32,58 @@ public class JavaClient {
             
             switch(questao){
             case 1:
-	            String nome, cargo;
-	            double salario = 0;
-	            
-	            System.out.println("Informe o nome do Funcionario: \n");
-	        	nome = scan.nextLine();
-	        	System.out.println("Informe o cargo do Funcionario: \n");
-	        	cargo = scan.nextLine();
-	        	System.out.println("Informe o salario atual do Funcionario: \n");
-	        	salario = scan.nextInt();
-	        	
-	            params.addElement(new String(nome));
-	            params.addElement(new String(cargo));
-	            params.addElement(new Double(salario));
-	
-	            // Call the server, and get our result.
-	            Hashtable result =
-	                (Hashtable) server.execute("sample.reajustaSalario", params);
-	            int novoSalario = ((Double) result.get("novoSalario")).intValue();
-	            String nomeRecebido = ((String) result.get("nomeRecebido"));
-	            //int difference = ((Integer) result.get("difference")).intValue();
-	
-	            // Print out our result.
-	            System.out.println("Nome: " + nomeRecebido +
-	                               ". Salario Reajustado: " +
-	                               Integer.toString(novoSalario));
-	            break;
+                String nome, cargo;
+                double salario = 0;
+                
+                System.out.println("Informe o nome do Funcionario: \n");
+                nome = scan.nextLine();
+                System.out.println("Informe o cargo do Funcionario: \n");
+                cargo = scan.nextLine();
+                System.out.println("Informe o salario atual do Funcionario: \n");
+                salario = scan.nextDouble();
+                
+                params.addElement(new String(nome));
+                params.addElement(new String(cargo));
+                params.addElement(new Double(salario));
+    
+                // Call the server, and get our result.
+                Hashtable result =
+                    (Hashtable) server.execute("sample.reajustaSalario", params);
+                
+                double novoSalario = ((Double) result.get("novoSalario")).doubleValue();
+                String nomeRecebido = ((String) result.get("nomeRecebido"));
+                //int difference = ((Integer) result.get("difference")).intValue();
+    
+                // Print out our result.
+                System.out.println("Nome: " + nomeRecebido +
+                                   ". Salario Reajustado: " +
+                                   Double.toString(novoSalario));
+                break;
             
             case 2:
                 String sexo, menorMaior;
                 int idade=0;
                 
                 System.out.println("Informe o nome do usuario: \n");
-            	nome = scan.nextLine();
-            	System.out.println("Informe o sexo do usuario (F ou M): \n");
-            	sexo = scan.nextLine();
-            	System.out.println("Informe a idade do usuario: \n");
-            	idade = scan.nextInt();
-            	
+                nome = scan.nextLine();
+                System.out.println("Informe o sexo do usuario (F ou M): \n");
+                sexo = scan.nextLine();
+                System.out.println("Informe a idade do usuario: \n");
+                idade = scan.nextInt();
+                
                 params.addElement(new String(nome));
                 params.addElement(new String(sexo));
                 params.addElement(new Integer(idade));
                 
              // Call the server, and get our result.
-	            result =
-	                (Hashtable) server.execute("sample.verificaMaioridade", params);
-	            menorMaior = ((String) result.get("menorMaior"));
-	            nomeRecebido = ((String) result.get("nomeRecebido"));
-	
-	            // Print out our result.
-	            System.out.println("Nome: " + nomeRecebido +
-	                               ". Situação: " + menorMaior);
+                result =
+                    (Hashtable) server.execute("sample.verificaMaioridade", params);
+                menorMaior = ((String) result.get("menorMaior"));
+                nomeRecebido = ((String) result.get("nomeRecebido"));
+    
+                // Print out our result.
+                System.out.println("Nome: " + nomeRecebido +
+                                   ". Situação: " + menorMaior);
             break;
             
             case 3:
@@ -88,64 +91,64 @@ public class JavaClient {
                 double nota1 = 0, nota2 = 0, nota3 = 0, media = 0;
                 
                 System.out.println("Informe a nota N1: \n");
-            	nota1 = scan.nextDouble();
-            	System.out.println("Informe a nota N2: \n");
-            	nota2 = scan.nextDouble();
-            	System.out.println("Informe a nota N3: \n");
-            	nota3 = scan.nextDouble();
-            	
+                nota1 = scan.nextDouble();
+                System.out.println("Informe a nota N2: \n");
+                nota2 = scan.nextDouble();
+                System.out.println("Informe a nota N3: \n");
+                nota3 = scan.nextDouble();
+                
                 params.addElement(new Double(nota1));
                 params.addElement(new Double(nota2));
                 params.addElement(new Double(nota3));
                 
              // Call the server, and get our result.
-	            result =
-	                (Hashtable) server.execute("sample.verificaMedia", params);
-	            media = ((Double) result.get("media"));
-	            situacao = ((String) result.get("situacao"));
-	
-	            // Print out our result.
-	            System.out.println("Media do aluno: " + media +
-	                               ". Situação: " + situacao);
+                result =
+                    (Hashtable) server.execute("sample.verificaMedia", params);
+                media = ((Double) result.get("media"));
+                situacao = ((String) result.get("situacao"));
+    
+                // Print out our result.
+                System.out.println("Media do aluno: " + media +
+                                   ". Situação: " + situacao);
             break;
             
             case 4:
                 double pesoIdeal, altura = 0;
                                 
                 System.out.println("Informe o sexo: F ou M");
-            	sexo = scan.nextLine();
-            	System.out.println("Informe a altura: \n");
-            	altura = scan.nextDouble();
-            	
-            	params.addElement(new Double(altura));
+                sexo = scan.nextLine();
+                System.out.println("Informe a altura: \n");
+                altura = scan.nextDouble();
+                
+                params.addElement(new Double(altura));
                 params.addElement(new String(sexo));
                 
                 // Call the server, and get our result.
-	            result =
-	                (Hashtable) server.execute("sample.calculaPesoIdeal", params);
-	            pesoIdeal = ((Double) result.get("pesoIdeal"));
-	            sexo = ((String) result.get("sexoRecebido"));
-	
-	            // Print out our result.
-	            System.out.println("Sexo: " + sexo +
-	                               ". Peso Ideal: " + pesoIdeal);
+                result =
+                    (Hashtable) server.execute("sample.calculaPesoIdeal", params);
+                pesoIdeal = ((Double) result.get("pesoIdeal"));
+                sexo = ((String) result.get("sexoRecebido"));
+    
+                // Print out our result.
+                System.out.println("Sexo: " + sexo +
+                                   ". Peso Ideal: " + pesoIdeal);
             break;
             
             case 5:
                 String categoria;
                                 
                 System.out.println("Informe a idade");
-            	idade = scan.nextInt();
-            	
-            	params.addElement(new Integer(idade));
+                idade = scan.nextInt();
+                
+                params.addElement(new Integer(idade));
                 
                 // Call the server, and get our result.
-	            result =
-	                (Hashtable) server.execute("sample.classificaNadador", params);
-	            categoria = ((String) result.get("categoria"));
-	
-	            // Print out our result.
-	            System.out.println("Categoria do Nadador: " + categoria);
+                result =
+                    (Hashtable) server.execute("sample.classificaNadador", params);
+                categoria = ((String) result.get("categoria"));
+    
+                // Print out our result.
+                System.out.println("Categoria do Nadador: " + categoria);
             break;
             
             case 6:
@@ -154,78 +157,78 @@ public class JavaClient {
                 String nivel;
                 
                 System.out.println("Informe o nome: ");
-            	nome = scan.nextLine();
-            	System.out.println("Informe o nível (A, B, C ou D): \n");
-            	nivel = scan.nextLine();
-            	System.out.println("Informe o salário bruto: \n");
-            	salBruto = scan.nextDouble();
-            	System.out.println("Informe o número de dependentes: \n");
-            	numDepend = scan.nextInt();
-            	
-            	params.addElement(new String(nome));
+                nome = scan.nextLine();
+                System.out.println("Informe o nível (A, B, C ou D): \n");
+                nivel = scan.nextLine();
+                System.out.println("Informe o salário bruto: \n");
+                salBruto = scan.nextDouble();
+                System.out.println("Informe o número de dependentes: \n");
+                numDepend = scan.nextInt();
+                
+                params.addElement(new String(nome));
                 params.addElement(new String(nivel));
                 params.addElement(new Double(salBruto));
                 params.addElement(new Integer(numDepend));
                 
                 // Call the server, and get our result.
-	            result =
-	                (Hashtable) server.execute("sample.calculaSalarioLiquido", params);
-	            salLiquido = ((Double) result.get("salLiquido"));
-	            nome = ((String) result.get("nomeRecebido"));
-	            nivel = ((String) result.get("nivelRecebido"));
-	
-	            // Print out our result.
-	            System.out.println("Nome: " + nome + ". Nível: " +nivel +
-	                               ". Salário Líquido: " + salLiquido);
+                result =
+                    (Hashtable) server.execute("sample.calculaSalarioLiquido", params);
+                salLiquido = ((Double) result.get("salLiquido"));
+                nome = ((String) result.get("nomeRecebido"));
+                nivel = ((String) result.get("nivelRecebido"));
+    
+                // Print out our result.
+                System.out.println("Nome: " + nome + ". Nível: " +nivel +
+                                   ". Salário Líquido: " + salLiquido);
             break;
             
             case 7:
                 int tempoServ = 0;
                 
                 System.out.println("Informe o sexo (M ou F): ");
-            	sexo = scan.nextLine();
-            	System.out.println("Informe a idade: \n");
-            	idade = scan.nextInt();
-            	System.out.println("Informe o tempo de serviço: \n");
-            	tempoServ = scan.nextInt();
-            	
-            	params.addElement(new String(sexo));
+                sexo = scan.nextLine();
+                System.out.println("Informe a idade: \n");
+                idade = scan.nextInt();
+                System.out.println("Informe o tempo de serviço: \n");
+                tempoServ = scan.nextInt();
+                
+                params.addElement(new String(sexo));
                 params.addElement(new Integer(tempoServ));
                 params.addElement(new Integer(idade));
                 
                 // Call the server, and get our result.
-	            result =
-	                (Hashtable) server.execute("sample.verificaAposentadoria", params);
-	            idade = ((Integer) result.get("idadeRecebida"));
-	            sexo = ((String) result.get("sexoRecebido"));
-	            situacao = ((String) result.get("situacao"));
-	
-	            // Print out our result.
-	            System.out.println("Sexo: " + sexo + ". Idade: " +idade +
-	                               ". Status para aposentadoria: " + situacao);
+                result =
+                    (Hashtable) server.execute("sample.verificaAposentadoria", params);
+                idade = ((Integer) result.get("idadeRecebida"));
+                sexo = ((String) result.get("sexoRecebido"));
+                situacao = ((String) result.get("situacao"));
+    
+                // Print out our result.
+                System.out.println("Sexo: " + sexo + ". Idade: " +idade +
+                                   ". Status para aposentadoria: " + situacao);
             break;
             
             case 8:
                 double saldoMedio = 0, valCredito = 0;
                 
                 System.out.println("Informe o saldo medio do cliente: ");
-            	saldoMedio = scan.nextDouble();
-            	
-            	params.addElement(new Double(saldoMedio));
-            	                
+                saldoMedio = scan.nextDouble();
+                
+                params.addElement(new Double(saldoMedio));
+                                
                 // Call the server, and get our result.
-	            result =
-	                (Hashtable) server.execute("sample.concederCredito", params);
-	            saldoMedio = ((Double) result.get("saldoMedioRecebido"));
-	            valCredito = ((Double) result.get("valCredito"));
-	            	
-	            // Print out our result.
-	            System.out.println("Saldo Médio do cliente: " +saldoMedio + ". Linha de crédito disponível para o cliente: " + valCredito);
+                result =
+                    (Hashtable) server.execute("sample.concederCredito", params);
+                saldoMedio = ((Double) result.get("saldoMedioRecebido"));
+                valCredito = ((Double) result.get("valCredito"));
+                    
+                // Print out our result.
+                System.out.println("Saldo Médio do cliente: " +saldoMedio + ". Linha de crédito disponível para o cliente: " + valCredito);
             break;
             
             default:
-	            System.out.println("Por favor informe uma questao de 1 a 8!");
-            	break;
+                System.out.println("Por favor informe uma questao de 1 a 8!");
+                break;
             }
             
         } catch (XmlRpcException exception) {
