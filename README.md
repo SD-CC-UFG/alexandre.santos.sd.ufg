@@ -18,7 +18,7 @@ em um dispositivo IOS através do navegador Safari.<br> Para verificar edições
 "Lista_Node" há o documento PDF contendo a descrição dos exercícios. Dentro do diretório desta implementação você pode encontrar capturas de tela do projeto em funcionamento (Client / Server) utilizando a IDE Eclipse para execução.
 
 <strong>Entrega 3 - Descrição: Implementação da Lista de Exercícios com a utilização de Remote Method Invocation - (Solução RMI)</strong><br>
-<strong>Linguagens e Tecnlogias:</strong> Java, IDE Eclipse<br>
+<strong>Linguagens e Tecnlogias:</strong> Java, RMI, IDE Eclipse<br>
 <strong>OBS:</strong> Para executar o projeto inicie o servidor através do arquivo "Server" e em seguida o cliente através do arquivo "Client". No diretório do projeto "Lista_Node" há o documento PDF contendo a descrição dos exercícios.
 
 <br>
