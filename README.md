@@ -1,6 +1,6 @@
 # alexandre.santos.sd.ufg
 
-<strong> Licensa BSD:</strong> "É permitido o uso de parte dos códigos aqui publicados sem autorização prévia, desde que identificada a fonte e o autor".
+<strong> Licensa GNU - GPL :</strong> "É permitido o uso de parte dos códigos aqui publicados sem autorização prévia, desde que identificada a fonte e o autor".
 
 <strong>Autor:</strong> Alexandre Oliveira dos Santos - Matrícula: 201407237 <br>
 <strong>Título:</strong> Arquivos da disciplina de Sistemas Distribuídos - Universidade Federal de Goiás - 2018-2. <br>
