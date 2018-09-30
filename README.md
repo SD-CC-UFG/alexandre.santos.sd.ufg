@@ -1,6 +1,6 @@
 # alexandre.santos.sd.ufg
 
-<strong> Licensa GNU - GPL :</strong> "É permitido o uso de parte dos códigos aqui publicados sem autorização prévia, desde que identificada a fonte e o autor".
+<strong> Licença GNU - GPL :</strong> "É permitido o uso de parte dos códigos aqui publicados sem autorização prévia, desde que identificada a fonte e o autor".
 
 <strong>Autor:</strong> Alexandre Oliveira dos Santos - Matrícula: 201407237 <br>
 <strong>Título:</strong> Arquivos da disciplina de Sistemas Distribuídos - Universidade Federal de Goiás - 2018-2. <br>
@@ -20,6 +20,10 @@ em um dispositivo IOS através do navegador Safari.<br> Para verificar edições
 <strong>Entrega 3 - Descrição: Implementação da Lista de Exercícios com a utilização de Remote Method Invocation - (Solução RMI)</strong><br>
 <strong>Linguagens e Tecnlogias:</strong> Java, RMI, IDE Eclipse<br>
 <strong>OBS:</strong> Para executar o projeto inicie o servidor através do arquivo "Server" e em seguida o cliente através do arquivo "Client". No diretório do projeto "Lista_Node" há o documento PDF contendo a descrição dos exercícios.
+
+<strong>Projeto Final - Descrição: Implementação do Projeto Final da disciplina "DigiEscola" - (A editar)</strong><br>
+<strong>Linguagens e Tecnlogias:</strong> (A editar) <br>
+<strong>OBS:</strong> (A editar)
 
 <br>
 
