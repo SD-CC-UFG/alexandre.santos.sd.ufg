@@ -1,0 +1,143 @@
+/*Limpando formatações padrões*/
+*{ /* O simbolo * diz que vale para tudo*/
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	font-size: 1em;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	background: #white; /*e6e6e6*/
+}
+
+/*
+*** Layout ***
+*/
+#area-cabecalho{
+	background-color: #00FF80;
+	padding: 15px; /*Espaçamento*/
+	text-align: center;
+}
+
+#area-logo{
+	padding: 10px;
+}
+
+#area-menu{
+	padding: 10px;
+}
+
+/*Temos uma area principal de 920px e dentro dela duas areas q somadas
+da 900px. Os 20px restantes serao usados no espaçamento*/
+
+#area-principal{
+	width: 920px;/*Fixando largura*/
+	margin: 0 auto;
+	padding: 15px; /*Sera aplicado tanto na area de postagem quanto na lateral*/
+}
+
+#area-postagens{
+	width: 660px;
+	float: left;
+}
+
+#area-lateral {
+	width: 240px;
+	float: right;
+}
+
+#area-rodape{
+	background: #CCC;
+	text-align: center;
+	padding: 15px;
+	clear: both;
+}
+
+.postagem{
+	padding: 20px;
+	margin-bottom: 20px;
+	background-position: white;
+}
+
+.conteudo-lateral{
+	background: white;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+
+.postagem-lateral{
+	font-size: 0.8em;
+	padding: 5px;
+	/*border-bottom: 1px dotted #ccc;*/
+}
+
+/*#area-menu, #area-logo{ Aplica mesma formatação a ambos ids
+	padding: 10px;
+}*/
+
+
+
+/*
+*** Formatação do Menu ***
+*/
+a{
+	text-decoration: none;
+}
+
+a:link, a:visited{ /*Formata links q estiverem em qualquer area*/
+	color: #00FF80;
+}
+
+a:hover{ /*Regra mais geral*/
+	text-decoration: underline;
+}
+
+#area-cabecalho a:link, #area-cabecalho a:visited{ /*Formata links q estiverem dentro da area de cabeçalho*/
+	color: #FFF;
+	padding: 8px 12px; /*8px(sup e inf) e 12px(laterais)*/
+}
+
+#area-cabecalho a:hover{ /*Regra mais específica*/
+	color: #00FF80; /*Mesma cor do background do cabeçalho*/
+	background: #FFF;
+	text-decoration: none;
+}
+
+/*
+*** Formatações em Geral***
+*/
+h1{
+	color: #4e4e4e;
+	font-size: 2.5em;
+}
+
+h2{
+	color: #00FF80; /*Mesmo tom de laranja da barra de menu*/
+}
+
+h3{
+	color: #565656;
+	/*background: #CCC;*/
+	padding: 5px;
+}
+
+.logout{
+	background: #CCC;
+}
+
+.fundoh3{
+	background: #CCC;
+}
+
+.branco{
+	color: white;
+}
+
+.data-postagem{
+	font-size: 0.8em;
+	border-bottom: 1px solid #f4f4f4;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	display: block; /*Altera comportamento do span q é inline para block*/
+}
