@@ -13,6 +13,7 @@ body{
 /*
 *** Layout ***
 */
+
 #area-cabecalho{
 	background-color: #00FF80;
 	padding: 15px; /*Espaçamento*/
@@ -120,6 +121,12 @@ h3{
 	color: #565656;
 	/*background: #CCC;*/
 	padding: 5px;
+}
+
+hr{
+  /*border-color:#aaa;*/
+  box-sizing:border-box;
+  width:100%;  
 }
 
 .logout{

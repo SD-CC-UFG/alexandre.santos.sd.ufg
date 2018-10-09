@@ -1,5 +1,7 @@
-//Autores: Alexandre Oliveira / Guilherme Ferreira / Lúcio Flavio.
-//Código baseado em: http://programmerblog.net/nodejs-passport-login-mysql/
+/*Autores: Alexandre Oliveira / Guilherme Ferreira / Lúcio Flavio.
+  Créditos: Código baseado p/ criar sessão e autenticação inspirado em: http://programmerblog.net/nodejs-passport-login-mysql/
+  Projeto desenvolvido para a disciplina de Sistemas Distribuídos (2018-2) - Universidade Federal de Goiás.
+*/
 
 var express = require('express');
 var path = require('path');
@@ -10,6 +12,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var indexLogged = require('./routes/indexLogged');
 
 var app = express();
 
@@ -38,7 +41,6 @@ var connection     = require('./lib/dbconn');
     saveUninitialized: true
 }));
 
-// uncomment after placing your favicon in /public
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -51,6 +53,15 @@ app.use(passport.session());
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/indexLogged', indexLogged);
+
+/* Código que usarei para criptografar quando formos cadastrar um usuário, trocar senha ou recuperar uma senha
+var passTest = '4321';
+var Secsalt = '7fa73b47df808d36c5fe328546ddef8b9011b2c6';
+saltTest = Secsalt+''+passTest;
+var encPasswordTest = crypto.createHash('sha1').update(saltTest).digest('hex');
+ console.log(encPasswordTest);
+*/
 
 //passport Strategy -- the express session middleware before calling passport.session()
 passport.use('local', new LocalStrategy({
@@ -61,6 +72,7 @@ passport.use('local', new LocalStrategy({
       console.log(username+' = '+ password);
       if(!username || !password ) { return done(null, false, req.flash('message','Todos os campos são requeridos.')); }
       var salt = '7fa73b47df808d36c5fe328546ddef8b9011b2c6';
+
       connection.query("select * from tbl_users where username = ?", [username], function(err, rows){
           console.log(err);
         if (err) return done(req.flash('message',err));
@@ -109,7 +121,7 @@ app.get('/logout', function(req, res){
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new Error('Página não encontrada!');
   err.status = 404;
   next(err);
 });

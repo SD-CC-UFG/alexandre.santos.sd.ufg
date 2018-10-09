@@ -55,3 +55,44 @@ ALTER TABLE `tbl_users`
 --
 ALTER TABLE `tbl_users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_students`
+--
+
+CREATE TABLE `tbl_students` (
+  `emailR` varchar(60) NOT NULL,
+  `username` varchar(16) NOT NULL,
+  `age` int(3) NOT NULL,
+  `full_name` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_users`
+--
+
+INSERT INTO `tbl_students` (`emailR`, `username`, `age`, `full_name`) VALUES
+("alexandre@mail.com", 'Roberth', '21', 'Roberth Risoldo');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbl_users`
+--
+/*ALTER TABLE `tbl_users`
+  ADD PRIMARY KEY (`id`);*/
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_users`
+--
+ALTER TABLE `tbl_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
