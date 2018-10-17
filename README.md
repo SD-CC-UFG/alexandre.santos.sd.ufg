@@ -21,9 +21,20 @@ em um dispositivo IOS através do navegador Safari.<br> Para verificar edições
 <strong>Linguagens e Tecnlogias:</strong> Java, RMI, IDE Eclipse<br>
 <strong>OBS:</strong> Para executar o projeto inicie o servidor através do arquivo "Server" e em seguida o cliente através do arquivo "Client". No diretório do projeto "Lista_Node" há o documento PDF contendo a descrição dos exercícios.
 
-<strong>Projeto Final - Descrição: Implementação do Projeto Final da disciplina "DigiEscola" - (A editar)</strong><br>
-<strong>Linguagens e Tecnlogias:</strong> (A editar) <br>
-<strong>OBS:</strong> (A editar)
+<strong>Projeto Final - Descrição: Implementação do Projeto Final da disciplina "DigiEscola" - (Em edição)</strong><br>
+<strong>Proposta:</strong> Implementar uma solução de invocação remota com arquitetura do tipo request-reply. <br>
+<strong>Justificativa:</strong>  Sender (Clients) serão Broswers e o Receiver (Server) será implementado com a utilização de Node.JS devido a algumas vantagens fornecidas por essa tecnologia, como:<br>
+- IO não-bloqueante devido ao event loop nativo que nunca para de executar e controla todas as requisições lidando com tarefas em concorrência; simplicidade; Javascript everywhere (Client and Server side) que reduz a curva de aprendizado; Alta capacidade de escala; Comunidade ativa; Adequação à proposta do projeto, entre outros.<br><br>
+
+<strong>OBS:</strong> Para suportar as necessidades do projeto algumas tecnologias que usaremos (Back) serão:<br>
+- MySQL; Passport; Express; BodyParser; Crypto.<br>
+- Além de tecnologias secundárias (Front):<br>
+- Pug Template Engine; Jquery; Bootstrap.<br>
+
+<strong>Funcionalidades:</strong><br>
+As funcionalidades passíveis de serem realizadas neste sistema são: (Editar)<br>
+1-<br>
+2-<br>
 
 <br>
 
