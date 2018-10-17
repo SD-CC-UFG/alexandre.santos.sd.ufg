@@ -1,0 +1,77 @@
+//extends layout
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='icon', href='/images/digiEscolaIcone.ico')
+    title DigiEscola | Registrar Usuario
+    link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
+    <!--link(href='/stylesheets/dashboard.css', rel='stylesheet')-->
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/estilo.css')
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+
+  body
+    <div id="area-cabecalho">
+        <div id="area-logo">
+          img(src= '/images/digiEscolaLogo.png' width="180")
+          <!-- <h1>Digi<span class="branco">Escola</span></s></h1> -->
+        </div>
+
+        <div id="area-menu">
+          <a href="/indexLogged">Pagina Principal</a>
+          <a href="">Funcionalidades</a>
+          <a href="">Ajuda</a>
+          <a href="users">Meu Espaço</a>
+          <a href="/logout">Sair</a>
+        </div>
+    </div>
+
+      .wrapper
+          
+        form.form-signin(method='post', action='/studentRegistration')
+          h3.form-signin-heading Cadastro de Aluno
+          |
+          - if(message){
+          p(style='color:red') #{message}
+          - }
+
+          <!--<div class="form-check form-check-inline">
+           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">Aluno</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" disabled>
+            <label class="form-check-label" for="inlineRadio2">Responsável (Indisponível)</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+            <label class="form-check-label" for="inlineRadio3">Secretaria (Indisponível)</label>
+          </div>
+          <br>-->             
+
+          input.form-control(type='text', name='nome', placeholder='Nome' required)
+          |
+          input.form-control(type='text', name='sobrenome', placeholder='Sobrenome' required)
+          |
+          input.form-control(type='text', name='turma', placeholder='Turma' required)
+          |
+          input.form-control(type='text', name='age', placeholder='Idade' required)
+          |
+          input.form-control(type='text', name='cpf_responsavel', placeholder='CPF Responsavel' required)
+          |
+          input.form-control(type='username', name='username', placeholder='Username' required)
+          |
+          input.form-control(type='password', name='password', placeholder='Senha' required)
+          label.checkbox
+          |
+
+          button.btn.btn-lg.btn-primary.btn-block(type='submit' class="btn btn-success") Registrar
+          
+          <!--<button type="submit" class="btn btn-success">Login</button>-->

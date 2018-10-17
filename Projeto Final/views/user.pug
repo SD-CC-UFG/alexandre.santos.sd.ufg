@@ -19,6 +19,7 @@ html(lang='en')
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.2/umd/popper.min.js'></script>
     <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
     
+    
     //if lt IE 9
       script(src='https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')
       script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
@@ -47,7 +48,8 @@ html(lang='en')
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#">Financeiro | </a>
           <a class="dropdown-item" href="#">Frequencia | </a>
-          <a class="dropdown-item" href="#">Avaliações</a>
+          <a class="dropdown-item" href="#">Avaliações | </a>
+          <a class="dropdown-item" href="/studentRegistration">Registrar Aluno</a>
         </div>
       </div>
 
@@ -65,11 +67,11 @@ block content
              h3.form-signin-heading DigiEscola System v 1.0
              h5 <strong>Bem vindo (a):</strong> #{full_name}<!-- &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
               a(href='/logout') Logout -->
-              h5 <strong>Estudantes vinculados:</strong>
+              h5 <strong>Seus dados:</strong>
              table
                 tr
                     th Username
-                    th Full Name
+                    th Nome Completo
                     th Id
                 tr
                     td  #{username}

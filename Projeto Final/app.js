@@ -13,6 +13,8 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var indexLogged = require('./routes/indexLogged');
+var studentRegistration = require('./routes/studentRegistration');
+var successRegister = require('./routes/successRegister');
 
 var app = express();
 
@@ -54,6 +56,8 @@ app.use(passport.session());
 app.use('/', index);
 app.use('/users', users);
 app.use('/indexLogged', indexLogged);
+app.use('/studentRegistration', studentRegistration);
+app.use('/successRegister', successRegister);
 
 /* Código que usarei para criptografar quando formos cadastrar um usuário, trocar senha ou recuperar uma senha
 var passTest = '4321';
