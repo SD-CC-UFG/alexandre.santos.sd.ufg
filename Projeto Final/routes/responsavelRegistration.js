@@ -6,7 +6,7 @@ var router = express.Router();
 
 router.get('/', isAuthenticated, function(req, res, next) {
 
-  res.render('studentRegistration');
+  res.render('responsavelRegistration');
 
 });
 
@@ -14,9 +14,8 @@ router.post('/', isAuthenticated, function(req, res, next) {
 
 	var nome = req.body.nome;
 	var sobrenome = req.body.sobrenome;
-	var turma = req.body.turma;
 	var age = req.body.age;
-	var cpf_responsavel = req.body.cpf_responsavel;
+	var cpf = req.body.cpf;
 	var username = req.body.username;
 	var password = req.body.password;
 
@@ -26,16 +25,16 @@ router.post('/', isAuthenticated, function(req, res, next) {
 	var password = encPassword;
 
 	var data = [
-		[nome, sobrenome, turma, age, cpf_responsavel, username, password]
+		[nome, sobrenome, age, cpf, username, password]
 	];
 	
-	var sql = "INSERT INTO tbl_students (nome, sobrenome, turma, age, cpf_responsavel, username, password) VALUES ?";
+	var sql = "INSERT INTO tbl_responsaveis (nome, sobrenome, age, cpf, username, password) VALUES ?";
 
 	try{
 	    connection.query(sql, [data], function(err, result, done){
 	        if (err) throw err;
 	        console.log("Number of records inserted: " + result.affectedRows);
-	        res.render('successStudentRegister', { nome: nome, turma: turma, cpf_responsavel: cpf_responsavel});
+	        res.render('successResponsavelRegister', { nome: nome, cpf: cpf});
 		});
 	}catch(error){
 		console.error(error);

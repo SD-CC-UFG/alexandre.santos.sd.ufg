@@ -5,12 +5,12 @@ var router = express.Router();
 
 router.get('/', isAuthenticated, function(req, res, next) {
   
-  res.render('successRegister', { nome: nome, turma: turma, cpf_responsavel: cpf_responsavel});
+  res.render('successResponsavelRegister', { nome: nome, cpf: cpf});
 
 });
 
 function isAuthenticated(req, res, next) {
-  if (req.session.user)
+  if (req.session.user && req.session.user.tipo === 'secretaria')
       return next();
 
   // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SIGNIN PAGE

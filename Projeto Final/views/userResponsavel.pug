@@ -49,7 +49,6 @@ html(lang='en')
           <a class="dropdown-item" href="#">Financeiro | </a>
           <a class="dropdown-item" href="#">Frequencia | </a>
           <a class="dropdown-item" href="#">Avaliações | </a>
-          <a class="dropdown-item" href="/studentRegistration">Registrar Aluno</a>
         </div>
       </div>
 
@@ -64,16 +63,16 @@ block content
 
       .wrapper
            form.form-signin(method='', action='')
-             h3.form-signin-heading DigiEscola System v 1.0
-             h5 <strong>Bem vindo (a):</strong> #{full_name}<!-- &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+             h3.form-signin-heading DigiEscola System v 1.1 - Tipo usuário: Responsável
+             h5 <strong>Bem vindo (a):</strong> #{nome}<!-- &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
               a(href='/logout') Logout -->
               h5 <strong>Seus dados:</strong>
              table
                 tr
                     th Username
-                    th Nome Completo
-                    th Id
+                    th Nome
+                    th CPF
                 tr
                     td  #{username}
-                    td  #{full_name}
-                    td #{id}
+                    td  #{nome}
+                    td  #{cpf}

@@ -4,17 +4,13 @@ var router = express.Router();
 /* GET user information after login */
 
 router.get('/', isAuthenticated, function(req, res, next) {
-
-  var username   = req.session.user.username;
-  var full_name  = req.session.user.full_name;
-  var id = req.session.user.id;
   
-  res.render('user', { username: username, full_name: full_name, id: id });
+  res.render('successStudentRegister', { nome: nome, turma: turma, cpf_responsavel: cpf_responsavel});
 
 });
 
 function isAuthenticated(req, res, next) {
-  if (req.session.user)
+  if (req.session.user && req.session.user.tipo === 'secretaria')
       return next();
 
   // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SIGNIN PAGE

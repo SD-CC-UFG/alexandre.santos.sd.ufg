@@ -19,7 +19,7 @@ use db_users;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_users` (Modelo)
+-- Table structure for table `tbl_users` (OBS: OPTEI POR MANTER APENAS PARA MODELO, TABELA NAO SERA UTILIZADA NO SISTEMA!)
 --
 
 CREATE TABLE `tbl_users` (
@@ -76,11 +76,12 @@ CREATE TABLE `tbl_students` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_users`
+-- Dumping data for table `tbl_students`
 --
 
+/*OBS: Apenas inserir (para testes) depois de realizar os dois passos seguintes. */
 INSERT INTO `tbl_students` (`nome`, `sobrenome`, `turma`, `age`, `cpf_responsavel`, `username`, `password`) VALUES
-('Paulo', 'Otavio Neto', 'A', '11', '04384298100', 'pauloOtavio', '6607a999607711cd339dce1de6d64425a0985cfd');
+('Paulo', 'Otavio Neto', 'A', '11', '04384298100', 'pauloOtavio', 'fa7886d681702bfb5c76ed9eb226e47c1e6cc973'); /*Senha 4321*/
 
 --
 -- Indexes for dumped tables
@@ -122,11 +123,12 @@ CREATE TABLE `tbl_responsaveis` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_users`
+-- Dumping data for table `tbl_responsaveis`
 --
 
+/*OBS: Apenas inserir (para testes) depois de realizar o passo seguinte. */
 INSERT INTO `tbl_responsaveis` (`nome`, `sobrenome`, `age`, `cpf`, `username`, `password`) VALUES
-('Ricardo', 'Otavio Junior', '40', '04384298100', 'pauloOtavio', '6607a999607711cd339dce1de6d64425a0985cfd');
+('Ricardo', 'Otavio Junior', '40', '04384298100', 'ricardoOtavio', 'fa7886d681702bfb5c76ed9eb226e47c1e6cc973'); /*Senha 4321 */
 
 --
 -- Indexes for dumped tables
@@ -151,27 +153,28 @@ CREATE TABLE `tbl_secretaria` (
   `nome` varchar(60) NOT NULL,
   `sobrenome` varchar(60) NOT NULL,
   `age` int(3) NOT NULL,
-  `cpf_secretaria` varchar(60) NOT NULL,
+  `cpf` varchar(60) NOT NULL,
   `username` varchar(16) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_users`
+-- Dumping data for table `tbl_secretaria`
 --
 
-INSERT INTO `tbl_secretaria` (`nome`, `sobrenome`, `age`, `cpf_secretaria`, `username`, `password`) VALUES
-('Flavia', 'Ribeiro Freitas', '22', '02233344455', 'flaviaRibeiro', '6607a999607711cd339dce1de6d64425a0985cfd');
+/*OBS: Apenas inserir (para testes) depois de realizar o passo seguinte. */
+INSERT INTO `tbl_secretaria` (`nome`, `sobrenome`, `age`, `cpf`, `username`, `password`) VALUES
+('Flavia', 'Ribeiro Freitas', '22', '02233344455', 'flaviaRibeiro', 'fa7886d681702bfb5c76ed9eb226e47c1e6cc973');  /*Senha 4321*/
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbl_students`
+-- Indexes for table `tbl_secretaria`
 --
 ALTER TABLE `tbl_secretaria`
-  ADD PRIMARY KEY (`cpf_secretaria`);
+  ADD PRIMARY KEY (`cpf`);
 
 --
 -- AUTO_INCREMENT for dumped tables

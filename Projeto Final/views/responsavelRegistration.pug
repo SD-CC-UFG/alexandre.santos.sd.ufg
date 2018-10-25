@@ -8,7 +8,7 @@ html(lang='en')
     meta(name='description', content='')
     meta(name='author', content='')
     link(rel='icon', href='/images/digiEscolaIcone.ico')
-    title DigiEscola | Registrar Estudante
+    title DigiEscola | Registrar Responsável
     link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
     <!--link(href='/stylesheets/dashboard.css', rel='stylesheet')-->
     link(rel='stylesheet', href='/stylesheets/style.css')
@@ -35,36 +35,20 @@ html(lang='en')
 
       .wrapper
           
-        form.form-signin(method='post', action='/studentRegistration')
-          h3.form-signin-heading Cadastro de Aluno
+        form.form-signin(method='post', action='/responsavelRegistration')
+          h3.form-signin-heading Cadastro de Responsáveis
           |
           - if(message){
           p(style='color:red') #{message}
-          - }
-
-          <!--<div class="form-check form-check-inline">
-           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-            <label class="form-check-label" for="inlineRadio1">Aluno</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" disabled>
-            <label class="form-check-label" for="inlineRadio2">Responsável (Indisponível)</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
-            <label class="form-check-label" for="inlineRadio3">Secretaria (Indisponível)</label>
-          </div>
-          <br>-->             
+          - }      
 
           input.form-control(type='text', name='nome', placeholder='Nome' required)
           |
           input.form-control(type='text', name='sobrenome', placeholder='Sobrenome' required)
           |
-          input.form-control(type='text', name='turma', placeholder='Turma' required)
-          |
           input.form-control(type='text', name='age', placeholder='Idade' required)
           |
-          input.form-control(type='text', name='cpf_responsavel', placeholder='CPF Responsavel' required)
+          input.form-control(type='text', name='cpf', placeholder='CPF' required)
           |
           input.form-control(type='username', name='username', placeholder='Username' required)
           |

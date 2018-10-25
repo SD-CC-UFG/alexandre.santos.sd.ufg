@@ -1,5 +1,5 @@
 /*Autores: Alexandre Oliveira / Guilherme Ferreira / Lúcio Flavio.
-  Créditos: Código baseado p/ criar sessão e autenticação inspirado em: http://programmerblog.net/nodejs-passport-login-mysql/
+  Créditos: Código baseado p/ criar sessão e autenticação inspirado inicialmente em: http://programmerblog.net/nodejs-passport-login-mysql/
   Projeto desenvolvido para a disciplina de Sistemas Distribuídos (2018-2) - Universidade Federal de Goiás.
 */
 
@@ -11,10 +11,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var usersResponsavel = require('./routes/usersResponsavel');
+var usersSecretaria = require('./routes/usersSecretaria');
 var indexLogged = require('./routes/indexLogged');
 var studentRegistration = require('./routes/studentRegistration');
-var successRegister = require('./routes/successRegister');
+var responsavelRegistration = require('./routes/responsavelRegistration');
+var successStudentRegister = require('./routes/successStudentRegister');
+var successResponsavelRegister = require('./routes/successResponsavelRegister');
 
 var app = express();
 
@@ -54,10 +57,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/usersResponsavel', usersResponsavel);
+app.use('/usersSecretaria', usersSecretaria);
 app.use('/indexLogged', indexLogged);
 app.use('/studentRegistration', studentRegistration);
-app.use('/successRegister', successRegister);
+app.use('/successStudentRegister', successStudentRegister);
+app.use('/responsavelRegistration', responsavelRegistration);
+app.use('/successResponsavelRegister', successStudentRegister);
 
 /* Código que usarei para criptografar quando formos cadastrar um usuário, trocar senha ou recuperar uma senha
 var passTest = '4321';
@@ -68,7 +74,7 @@ var encPasswordTest = crypto.createHash('sha1').update(saltTest).digest('hex');
 */
 
 //passport Strategy -- the express session middleware before calling passport.session()
-passport.use('local', new LocalStrategy({
+passport.use('secretaria-local', new LocalStrategy({
   usernameField: 'username',
   passwordField: 'password',
   passReqToCallback: true //passback entire req to call back
@@ -77,17 +83,44 @@ passport.use('local', new LocalStrategy({
       if(!username || !password ) { return done(null, false, req.flash('message','Todos os campos são requeridos.')); }
       var salt = '7fa73b47df808d36c5fe328546ddef8b9011b2c6';
 
-      connection.query("select * from tbl_users where username = ?", [username], function(err, rows){
+      connection.query("select * from tbl_secretaria where username = ?", [username], function(err, rows){
           console.log(err);
         if (err) return done(req.flash('message',err));
 
-        if(!rows.length){ return done(null, false, req.flash('message','Usuário ou Senha inválida.')); }
+        if(!rows.length){ return done(null, false, req.flash('message','Usuário inválido.')); }
         salt = salt+''+password;
         var encPassword = crypto.createHash('sha1').update(salt).digest('hex');
         var dbPassword  = rows[0].password;
         
         if(!(dbPassword == encPassword)){
-            return done(null, false, req.flash('message','Usuário ou Senha inválida.'));
+            return done(null, false, req.flash('message','Senha inválida.'));
+         }
+         req.session.user = rows[0];
+        return done(null, rows[0]);
+      });
+    }
+));
+
+passport.use('responsaveis-local', new LocalStrategy({
+  usernameField: 'username',
+  passwordField: 'password',
+  passReqToCallback: true //passback entire req to call back
+} , function (req, username, password, done){
+      console.log(username+' = '+ password);
+      if(!username || !password ) { return done(null, false, req.flash('message','Todos os campos são requeridos.')); }
+      var salt = '7fa73b47df808d36c5fe328546ddef8b9011b2c6';
+
+      connection.query("select * from tbl_responsaveis where username = ?", [username], function(err, rows){
+          console.log(err);
+        if (err) return done(req.flash('message',err));
+
+        if(!rows.length){ return done(null, false, req.flash('message','Usuário inválido.')); }
+        salt = salt+''+password;
+        var encPassword = crypto.createHash('sha1').update(salt).digest('hex');
+        var dbPassword  = rows[0].password;
+        
+        if(!(dbPassword == encPassword)){
+            return done(null, false, req.flash('message','Senha inválida.'));
          }
          req.session.user = rows[0];
         return done(null, rows[0]);
@@ -96,31 +129,53 @@ passport.use('local', new LocalStrategy({
 ));
 
 passport.serializeUser(function(user, done){
-    done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done){
-    connection.query("select * from tbl_users where id = "+ id, function (err, rows){
-        done(err, rows[0]);
+    done(null, {
+      cpf : user.cpf,
+      tipo : user.tipo
     });
 });
 
-app.get('/signin', function(req, res){
+passport.deserializeUser(function(user, done){
+    var table = user.tipo === 'secretaria' ? 'tbl_secretaria' : 'tbl_responsaveis';
+    connection.query('select * from ?? where cpf = ?', [table, user.cpf], function (err, rows){
+      if(err){
+        return done(err);
+      } else if(!Array.isArray(rows) || ! rows.length){
+        return done();
+      } else{
+        return done(err, rows[0]);
+      }
+    });
+});
+
+app.get('/signinResponsavel', function(req, res){
   res.render('login/index',{'message' :req.flash('message')});
 });
 
-app.post("/signin", passport.authenticate('local', {
-    successRedirect: '/users',
-    failureRedirect: '/signin',
+app.post("/signinResponsavel", passport.authenticate('responsaveis-local', {
+    successRedirect: '/usersResponsavel',
+    failureRedirect: '/signinResponsavel',
     failureFlash: true
 }), function(req, res, info){
     res.render('login/index',{'message' :req.flash('message')});
 });
 
+app.get('/signinSecretaria', function(req, res){
+  res.render('login/indexAdmin',{'message' :req.flash('message')});
+});
+
+app.post("/signinSecretaria", passport.authenticate('secretaria-local', {
+    successRedirect: '/usersSecretaria',
+    failureRedirect: '/signinSecretaria',
+    failureFlash: true
+}), function(req, res, info){
+    res.render('login/indexAdmin',{'message' :req.flash('message')});
+});
+
 app.get('/logout', function(req, res){
     req.session.destroy();
     req.logout();
-    res.redirect('/signin');
+    res.redirect('/signinResponsavel');
 });
 
 // catch 404 and forward to error handler
@@ -144,6 +199,6 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 
 app.listen(3001, () =>{/*Colocar servidor em funcionamento*/
-	console.log('Servidor em funcionamento em: http://localhost:3001')
-	console.log('Para finalizar: pressione Ctrl+C')
+  console.log('Servidor em funcionamento em: http://localhost:3001')
+  console.log('Para finalizar: pressione Ctrl+C')
 })

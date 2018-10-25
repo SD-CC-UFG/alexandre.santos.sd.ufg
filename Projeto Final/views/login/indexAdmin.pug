@@ -36,7 +36,7 @@ html(lang='en')
 
       .wrapper
 
-        form.form-signin(method='post', action='/signinResponsavel')
+        form.form-signin(method='post', action='/signinSecretaria')
           h3.form-signin-heading Entrar na sua conta
           |
           - if(message){
@@ -49,5 +49,5 @@ html(lang='en')
           |
           button.btn.btn-lg.btn-primary.btn-block(type='submit' class="btn btn-success") Login
           <!--<button type="submit" class="btn btn-success">Login</button>-->
-          <br><strong>Página destinada a Login de usuários do tipo (Responsável)</strong>
-          <br><br>Login Administrativo? <a href="signinSecretaria">Clique aqui</a>
+          <br><strong>Página destinada a Login de usuários do tipo (Secretaria)</strong>
+          <br><br>Login Responsáveis? <a href="signinResponsavel">Clique aqui</a>
