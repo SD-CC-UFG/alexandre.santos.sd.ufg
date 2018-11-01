@@ -44,7 +44,7 @@ As funcionalidades passíveis de serem realizadas neste sistema são: (Editar)<b
 1- A senha dos usuários será persistida de forma criptografada na base de dados em SAH1 com chave e com o uso do Crypto.<br>
 2- Para manter e impedir que o servidor saia do ar será utilizado a ferramenta Forever que monitora o servidor realizando pings e a reestarta caso verifique que a mesma esta "fora do ar"<br>
 3- Para instanciar novos processos da aplicação e trabalhar de forma distribuída usando a mesma porta da rede e melhorando a perfomance será utilizado o módulo cluster para instanciar um maior nº de processos (quantidade de núcleos do processador do servidor).<br>
-4- <br> Será realizado um comparativo (benchmark) para analisar e mensurar o desempenho e comportamento da aplicação em dois cenários: Utilizando cluster e também sem cluster, levando-se em conta concorrência (clientes iniciados em paralelo), número de requisições por segundo e outros parâmetros. Será utilizada a ferramenta loadtest para a ação.
+4- Será realizado um comparativo (benchmark) para analisar e mensurar o desempenho e comportamento da aplicação em dois cenários: Utilizando cluster e também sem cluster, levando-se em conta concorrência (clientes iniciados em paralelo), número de requisições por segundo e outros parâmetros. Será utilizada a ferramenta loadtest para a ação.<br>
 5- <br>
 
 <strong>Contato:</strong> alexandresantosti@hotmail.com
