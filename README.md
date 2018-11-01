@@ -21,13 +21,13 @@ em um dispositivo IOS através do navegador Safari.<br> Para verificar edições
 <strong>Linguagens e Tecnlogias:</strong> Java, RMI, IDE Eclipse<br>
 <strong>OBS:</strong> Para executar o projeto inicie o servidor através do arquivo "Server" e em seguida o cliente através do arquivo "Client". No diretório do projeto "Lista_Node" há o documento PDF contendo a descrição dos exercícios.
 
-<strong>Projeto Final - Descrição: Implementação do Projeto Final da disciplina "DigiEscola" - (Em edição)</strong><br>
+<strong>Entrega 4 - Projeto Final - Descrição: Implementação do Projeto Final da disciplina "DigiEscola" - (Em edição)</strong><br>
 <strong>Proposta:</strong> Implementar uma solução de invocação remota com arquitetura do tipo request-reply REST-Based e com o uso de operações CRUD. <br>
 <strong>Justificativa:</strong>  Senders (Clients) serão Broswers e o Receiver (Server) será implementado com a utilização de Node.JS devido a algumas vantagens fornecidas por essa tecnologia, como:<br>
 - IO não-bloqueante devido ao event loop nativo que nunca para de executar e controla todas as requisições lidando com tarefas em concorrência; simplicidade; Javascript everywhere (Client and Server side) que reduz a curva de aprendizado; Alta capacidade de escala; Comunidade ativa; Adequação à proposta do projeto, entre outros.<br><br>
 
 <strong>OBS:</strong> Para suportar as necessidades do projeto algumas tecnologias que usaremos (Back) serão:<br>
-- MySQL Database; Passport; Express; BodyParser; Crypto.<br>
+- MySQL Database; Redis; Passport; Express; BodyParser; Crypto; Nodemon; Loadtest; etc.<br>
 - Além de tecnologias secundárias (Front):<br>
 - Pug Template Engine; Jquery; Bootstrap.<br>
 
@@ -43,8 +43,8 @@ As funcionalidades passíveis de serem realizadas neste sistema são: (Editar)<b
 <strong>Não funcionais</strong> - (Em edição)<br>
 1- A senha dos usuários será persistida de forma criptografada na base de dados em SAH1 com chave e com o uso do Crypto.<br>
 2- Para manter e impedir que o servidor saia do ar será utilizado a ferramenta Forever que monitora o servidor realizando pings e a reestarta caso verifique que a mesma esta "fora do ar"<br>
-3- Para instanciar novos processos da aplicação e trabalhar de forma distribuída usando a mesma porta da rede será utilizado o módulo cluster para instanciar um maior nº de processos (quantidade de núcleos do processador do servidor).<br>
-4- <br>
+3- Para instanciar novos processos da aplicação e trabalhar de forma distribuída usando a mesma porta da rede e melhorando a perfomance será utilizado o módulo cluster para instanciar um maior nº de processos (quantidade de núcleos do processador do servidor).<br>
+4- <br> Será realizado um comparativo (benchmark) para analisar e mensurar o desempenho e comportamento da aplicação em dois cenários: Utilizando cluster e também sem cluster, levando-se em conta concorrência (clientes iniciados em paralelo), número de requisições por segundo e outros parâmetros. Será utilizada a ferramenta loadtest para a ação.
 5- <br>
 
 <strong>Contato:</strong> alexandresantosti@hotmail.com
