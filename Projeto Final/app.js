@@ -1,14 +1,30 @@
-/*Autores: Alexandre Oliveira / Guilherme Ferreira / Lúcio Flavio.
-  Créditos: Código baseado p/ criar sessão e autenticação inspirado inicialmente em: http://programmerblog.net/nodejs-passport-login-mysql/
-  Projeto desenvolvido para a disciplina de Sistemas Distribuídos (2018-2) - Universidade Federal de Goiás.
+/*Developers: Alexandre Oliveira / Guilherme Ferreira / Lúcio Flavio.
+  Credits: Article based to create session and auttentication inspired initially by: http://programmerblog.net/nodejs-passport-login-mysql/
+  Project developed to the  discipline of Distributed Systems (2018-2) - Universidade Federal de Goiás.
 */
 
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var cluster = require('cluster');
+if(cluster.isMaster){
+  var cpuCount = require('os').cpus().length;
+
+  for(var i=0; i < cpuCount; i += 1){
+    cluster.fork();
+  }
+
+  cluster.on('exit', (worker, code, signal)=>{
+    console.log(`Worker ${worker.process.pid} died with code: ${code}, and signal: ${signal}`)
+    console.log('Starting a new worker');
+    cluster.fork();
+  });
+
+}else{
+
+var express = require('express'),
+path = require('path'),
+favicon = require('serve-favicon'),
+logger = require('morgan'),
+cookieParser = require('cookie-parser'),
+bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var usersResponsavel = require('./routes/usersResponsavel');
@@ -29,13 +45,15 @@ app.set('view engine', 'pug');
 
 var flash    = require('connect-flash');
 var crypto   = require('crypto');
+
 /* Login script */
 var passport = require('passport');
 var LocalStrategy  = require('passport-local').Strategy;
 var connection     = require('./lib/dbconn');
 
  var sess  = require('express-session');
- var Store = require('express-session').Store
+ /*Changing In Memory Sessions (I'll transfer to Redis due the new support to Clusters)*/
+ /*var Store = require('express-session').Store
  var BetterMemoryStore = require(__dirname + '/memory')
  var store = new BetterMemoryStore({ expires: 60 * 60 * 1000, debug: true })
  app.use(sess({
@@ -44,7 +62,27 @@ var connection     = require('./lib/dbconn');
     store:  store,
     resave: true,
     saveUninitialized: true
-}));
+}));*/
+
+// Setting and using redis as session store for Express.
+ var redis = require('redis');
+ var redisStore = require('connect-redis')(sess);
+ var client = redis.createClient();
+
+ client.on('connect', function(){
+  console.log('Redis client connected');
+ })
+ 
+ client.on('error', function(){
+  console.log('Something went wrong ' +err);
+ })
+
+ app.use(sess({
+  secret : 'keyboard cat',
+  store : new redisStore({host : '127.0.0.1', port: 6379, ttl : 260}),
+  saveUninitialized : false,
+  resave : false
+ }))
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -73,7 +111,7 @@ var encPasswordTest = crypto.createHash('sha1').update(saltTest).digest('hex');
  console.log(encPasswordTest);
 */
 
-//passport Strategy -- the express session middleware before calling passport.session()
+//passport Strategy -- the express session middleware for Autentication before calling passport.session()
 passport.use('secretaria-local', new LocalStrategy({
   usernameField: 'username',
   passwordField: 'password',
@@ -130,7 +168,7 @@ passport.use('responsaveis-local', new LocalStrategy({
 
 passport.serializeUser(function(user, done){
     done(null, {
-      cpf : user.cpf,
+      cpf  : user.cpf,
       tipo : user.tipo
     });
 });
@@ -180,7 +218,7 @@ app.get('/logout', function(req, res){
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Página não encontrada!');
+  var err = new Error('Infelizmente essa página não existe! :(');
   err.status = 404;
   next(err);
 });
@@ -196,9 +234,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+var PORTA = 3001;
 
-app.listen(3001, () =>{/*Colocar servidor em funcionamento*/
-  console.log('Servidor em funcionamento em: http://localhost:3001')
-  console.log('Para finalizar: pressione Ctrl+C')
+app.listen(PORTA, () =>{/*Colocar servidor em funcionamento*/
+  console.log('Servidor em funcionamento em: http://localhost:%d', PORTA);
+  console.log('Para finalizar: pressione Ctrl+C');
 })
+
+console.log('Worker %d running!', cluster.worker.id);
+}
+
+module.exports = app;

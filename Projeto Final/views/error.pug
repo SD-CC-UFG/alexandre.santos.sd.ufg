@@ -1,6 +1,19 @@
 extends layout
 
 block content
-  h1= message
+  <div id="area-cabecalho">
+   <div id="area-logo" align="center">
+    img(src= '/images/digiEscolaLogo.png' width="180")
+   </div>
+  </div>
+  <br><br><br><br>
+  <div align="center">
   h2= error.status
-  pre #{error.stack}
+  <br><br><br><br>
+  h1= message
+  <br>
+  <h1> Que tal voltar à <a href="/">home page?</a> </h1>
+  </div>
+  h
+  <!--h5="Detalhamento do erro:"
+  pre #{error.stack}-->

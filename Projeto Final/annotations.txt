@@ -1,0 +1,24 @@
+/*<Instructions By: Alexandre O.> */
+
+/* Forever
+To use Forever that keeps the application working (up) even in case of failures, use the following commands:
+Description: "Forever is a node.js package used to keep the server alive even when the server crash/stops. When the node server is stopped because of some error, exception, etc. forever automatically restarts it". Forever basically allows you to run your nodejs application as a process even when you close terminal because it don't run in the terminal session .
+  To start :  forever start app.js
+  To list  :  forever list
+  To stop  : forever stop 0 
+*/
+
+/* Nodemon
+	  Suporte ao Nodemon (Filewatcher) - Auto-restart of the applicattion always when a file project is modified. 
+	  Commands:
+	  To start: nodemon app.js
+*/
+
+/* Redis (Sessions)
+	redis-cli
+	
+*/
+
+/* Loadtest
+	loadtest -n 1000 -c 200 "http://localhost:3001"
+*/
