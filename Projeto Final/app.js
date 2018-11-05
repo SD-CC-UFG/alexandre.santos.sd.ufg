@@ -27,6 +27,7 @@ cookieParser = require('cookie-parser'),
 bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var chat = require('./routes/chat');
 var usersResponsavel = require('./routes/usersResponsavel');
 var usersSecretaria = require('./routes/usersSecretaria');
 var indexLogged = require('./routes/indexLogged');
