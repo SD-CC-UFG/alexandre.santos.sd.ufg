@@ -97,6 +97,7 @@ app.use(passport.session());
 
 app.use('/', index);
 app.use('/usersResponsavel', usersResponsavel);
+app.use('/chat', chat);
 app.use('/usersSecretaria', usersSecretaria);
 app.use('/indexLogged', indexLogged);
 app.use('/studentRegistration', studentRegistration);
