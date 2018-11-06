@@ -27,6 +27,7 @@ cookieParser = require('cookie-parser'),
 bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var chat = require('./routes/chat');
 var usersResponsavel = require('./routes/usersResponsavel');
 var usersSecretaria = require('./routes/usersSecretaria');
 var indexLogged = require('./routes/indexLogged');
@@ -96,6 +97,7 @@ app.use(passport.session());
 
 app.use('/', index);
 app.use('/usersResponsavel', usersResponsavel);
+app.use('/chat', chat);
 app.use('/usersSecretaria', usersSecretaria);
 app.use('/indexLogged', indexLogged);
 app.use('/studentRegistration', studentRegistration);

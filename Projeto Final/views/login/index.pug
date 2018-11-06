@@ -42,9 +42,9 @@ html(lang='en')
           - if(message){
           p(style='color:red') #{message}
           - }
-          input.form-control(type='text', name='username', placeholder='Usuário' required)
+          input.form-control(type='text', name='username', placeholder='Usuário' required oninvalid="this.setCustomValidity('O campo Usuário é obrigatório')"  oninput="setCustomValidity('')")
           |
-          input.form-control(type='password', name='password', placeholder='Senha' required)
+          input.form-control(type='password', name='password', placeholder='Senha' required oninvalid="this.setCustomValidity('O campo Senha é obrigatório')"  oninput="setCustomValidity('')")
           label.checkbox
           |
           button.btn.btn-lg.btn-primary.btn-block(type='submit' class="btn btn-success") Login
