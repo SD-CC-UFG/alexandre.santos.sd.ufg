@@ -5,7 +5,7 @@ var router = express.Router();
 
 router.get('/', isAuthenticated, function(req, res, next) {
 
-  res.render('chat', { name: req.session.user.username });
+  res.render('chat', { name: req.session.user.username, type: req.session.user.tipo });
 
 });
 
