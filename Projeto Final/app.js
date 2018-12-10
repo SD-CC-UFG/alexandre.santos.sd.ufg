@@ -27,7 +27,9 @@ cookieParser = require('cookie-parser'),
 bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var chat = require('./routes/chat');
+
+var chatSecretaria = require('./routes/chatSecretaria');
+var chatResponsavel = require('./routes/chatResponsavel');
 var usersResponsavel = require('./routes/usersResponsavel');
 var usersSecretaria = require('./routes/usersSecretaria');
 var indexLogged = require('./routes/indexLogged');
@@ -97,7 +99,8 @@ app.use(passport.session());
 
 app.use('/', index);
 app.use('/usersResponsavel', usersResponsavel);
-app.use('/chat', chat);
+app.use('/chatSecretaria', chatSecretaria);
+app.use('/chatResponsavel', chatResponsavel);
 app.use('/usersSecretaria', usersSecretaria);
 app.use('/indexLogged', indexLogged);
 app.use('/studentRegistration', studentRegistration);
@@ -228,7 +231,7 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
-  res.locals.message = 'OOps! Ocorreu um erro.';/*err.message;*/
+  res.locals.message = 'OOps! Ocorreu um erro.'; /*err.message;*/
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
