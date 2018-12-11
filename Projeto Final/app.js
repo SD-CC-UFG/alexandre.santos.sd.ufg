@@ -247,6 +247,7 @@ app.listen(PORTA, () =>{/*Colocar servidor em funcionamento*/
 })
 
 console.log('Worker %d running!', cluster.worker.id);
+
 }
 
 module.exports = app;
